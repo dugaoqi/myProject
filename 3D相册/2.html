@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        ul {
+            list-style:none;
+        }
+        body {
+            background-color:black;
+            overflow:hidden;
+            perspective:1000px;
+        }
+        .box {
+            width:316px;
+            height:387px;
+            border:5px solid #fc3;
+            margin:100px auto;
+            transition:all 1s;
+            transform-origin:center bottom;
+        }
+        .box ul {
+            position:relative;
+            width:306px;
+            height:377px;
+            border:5px solid #fc3;
+            transform-style:preserve-3d;
+            perspective:1000px;
+        }
+        .box	ul li {
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            transition:all 1s;
+            transform-origin:left center;
+            border:1px solid  gold;
+            box-sizing:border-box;
+        }
+        .box ul li img {
+            width:100%;
+            height:100%;
+        }
+        .box:hover {
+            transform:rotateX(45deg);
+        }
+        .box ul:hover li:nth-child(6) {
+            transform:rotateY(-160deg);
+            transition:all 1s 2s;
+        }
+        .box ul:hover li:nth-child(5) {
+            transform:rotateY(-120deg);
+            transition:all 1s 3s;
+        }
+        .box ul:hover li:nth-child(4) {
+            transform:rotateY(-100deg);
+            transition:all 1s 4s;
+        }
+        .box ul:hover li:nth-child(3) {
+            transform:rotateY(-70deg);
+            transition:all 1s 5s;
+        }
+        .box ul:hover li:nth-child(2) {
+            transform:rotateY(-40deg);
+            transition:all 1s 6s;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <img src="http://www.jq22.com/img/cs/500x500-1.png" alt="加载错误" width="" height="">
+            </li>
+            <li>
+                <img src="http://www.jq22.com/img/cs/500x500-2.png" alt="加载错误" width="" height="">
+            </li>
+            <li>
+                <img src="http://www.jq22.com/img/cs/500x500-3.png" alt="加载错误" width="" height="">
+            </li>
+            <li>
+                <img src="http://www.jq22.com/img/cs/500x500-4.png" alt="加载错误" width="" height="">
+            </li>
+            <li>
+                <img src="http://www.jq22.com/img/cs/500x500-5.png" alt="加载错误" width="" height="">
+            </li>
+            <li>
+                <img src="http://www.jq22.com/img/cs/500x500-6.png" alt="加载错误" width="" height="">
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

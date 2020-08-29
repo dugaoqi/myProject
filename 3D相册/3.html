@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .stage-area {
+            perspective: 800px;
+        }
+        .container {
+            transform-style: preserve-3d;
+            width: 160px;
+        }
+        img {
+            max-width: 100%;
+        }
+        .container {
+            /* ... */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -80px;
+            margin-left: -80px;
+        }
+        img {
+            /* 去掉定位呈现DNA螺旋效果 */
+            position: absolute;
+        }
+        html, body {
+            height: 100%;
+        }
+        .stage-area {
+            min-height: 100%;
+        }
+        .container a:nth-child(1) img {
+            transform: rotateY(0deg);
+        }
+        .container a:nth-child(2) img {
+            transform: rotateY(40deg);
+        }
+        .container a:nth-child(3) img {
+            transform: rotateY(80deg);
+        }
+        .container a:nth-child(4) img {
+            transform: rotateY(120deg);
+        }
+        .container a:nth-child(5) img {
+            transform: rotateY(160deg);
+        }
+        .container a:nth-child(6) img {
+            transform: rotateY(200deg);
+        }
+        .container a:nth-child(7) img {
+            transform: rotateY(240deg);
+        }
+        .container a:nth-child(8) img {
+            transform: rotateY(280deg);
+        }
+        .container a:nth-child(9) img {
+            transform: rotateY(320deg);
+        }
+
+        .container a:nth-child(1) img {
+            transform: rotateY(0deg) translateZ(250px);
+        }
+        .container a:nth-child(2) img {
+            transform: rotateY(40deg) translateZ(250px);
+        }
+        .container a:nth-child(3) img {
+            transform: rotateY(80deg) translateZ(250px);
+        }
+        .container a:nth-child(4) img {
+            transform: rotateY(120deg) translateZ(250px);
+        }
+        .container a:nth-child(5) img {
+            transform: rotateY(160deg) translateZ(250px);
+        }
+        .container a:nth-child(6) img {
+            transform: rotateY(200deg) translateZ(250px);
+        }
+        .container a:nth-child(7) img {
+            transform: rotateY(240deg) translateZ(250px);
+        }
+        .container a:nth-child(8) img {
+            transform: rotateY(280deg) translateZ(250px);
+        }
+        .container a:nth-child(9) img {
+            transform: rotateY(320deg) translateZ(250px);
+        }
+
+
+        /* .stage-area {
+            perspective-origin: center 30%;
+        } */
+
+
+        @keyframes rotating {
+            0% {
+                transform: rotateY(0deg);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+        .container {
+            /*animation: rotating 10s linear 3s infinite alternate forwards;*/
+            animation-name: rotating;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            /*animation-delay: 3s;*/
+            animation-iteration-count: infinite;
+            /*animation-direction: alternate;*/
+            /*animation-fill-mode: forwards;*/
+        }
+
+
+        .container:hover {
+            animation-play-state: paused;
+        }
+        .container img {
+            border: 3px solid rgba(255, 255, 255, .5);
+        }
+    </style>
+</head>
+<body>
+    <!-- 链接
+            https://blog.csdn.net/guduyibeizi/article/details/80790109 
+            https://www.cnblogs.com/xmoomoo/p/5779944.html
+            https://www.php.cn/html5-tutorial-363144.html
+    -->
+    <div class="stage-area">
+        <div class="container">
+            <a href="#"><img src="./img/0.jpg" /></a>
+            <a href="#"><img src="./img/0.jpg" /></a>
+            <a href="#"><img src="./img/0.jpg" /></a>
+            <a href="#"><img src="./img/0.jpg" /></a>
+            <a href="#"><img src="./img/0.jpg" /></a>
+            <a href="#"><img src="./img/0.jpg" /></a>
+            <a href="#"><img src="./img/0.jpg" /></a>
+            <a href="#"><img src="./img/0.jpg" /></a>
+            <a href="#"><img src="./img/0.jpg" /></a>
+        </div>
+    </div>
+</body>
+</html>

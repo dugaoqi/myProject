@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>照片墙</title>
+<style>
+*{margin:0;padding:0;}
+li{list-style:none;}
+
+body{perspective:800px;}
+ul{width:160px;height:240px;margin:200px auto;box-shadow:0 0 5px #000;
+position:relative;transform-style:preserve-3d;
+animation:zhuan 3s linear infinite;}
+ul li{position:absolute;}
+ul li img{display:block;width:160px;height:240px;}
+ul li:nth-child(1){transform:translateZ(300px);}
+ul li:nth-child(2){transform:rotateY(45deg) translateZ(300px);}
+ul li:nth-child(3){transform:rotateY(90deg) translateZ(300px);}
+ul li:nth-child(4){transform:rotateY(135deg) translateZ(300px);}
+ul li:nth-child(5){transform:rotateY(180deg) translateZ(300px);}
+ul li:nth-child(6){transform:rotateY(225deg) translateZ(300px);}
+ul li:nth-child(7){transform:rotateY(270deg) translateZ(300px);}
+ul li:nth-child(8){transform:rotateY(315deg) translateZ(300px);}
+@keyframes zhuan{
+	0%{transform:rotateX(-15deg) rotateY(0deg)}
+	100%{transform:rotateX(-15deg) rotateY(360deg)}	
+}
+</style>
+</head>
+<body>
+    <ul>
+        <li><img src="images/w1.jpg" /></li>
+        <li><img src="images/w2.jpg" /></li>
+        <li><img src="images/w3.jpg" /></li>
+        <li><img src="images/w4.jpg" /></li>
+        <li><img src="images/w5.jpg" /></li>
+        <li><img src="images/w6.jpg" /></li>
+        <li><img src="images/w7.jpg" /></li>
+        <li><img src="images/w8.jpg" /></li>
+    </ul>
+</body>
+</html>

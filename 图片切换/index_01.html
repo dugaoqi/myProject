@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        #box{
+            width:500px;
+            height:300px;
+            background:#ccc;
+            margin:40px auto;
+        }
+
+
+    </style>
+    <script>
+        window.onload=function(){
+            var index=0;
+            var imgsrc=["./img/01.jpg","./img/02.jpg","./img/03.jpg"];
+            var prevbtn=document.getElementsByClassName("prev")[0];
+            var nextbtn=document.getElementsByClassName("next")[0];
+            var img=document.getElementsByClassName("img")[0];
+            prevbtn.onclick=function(){
+                index--;
+                if(index<0){
+                    index=imgsrc.length-1;
+                }
+                img.src=imgsrc[index];
+            }
+            nextbtn.onclick=function(){
+                index++;
+                if(index>imgsrc.length-1){
+                    index=0
+                }
+                img.src=imgsrc[index];
+            }
+
+
+
+
+
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="box">
+        <img class="img" src="./img/01.jpg" alt="">
+        <button class="prev">上一张</button>
+        <button class="next">下一张</button>
+    </div>
+</body>
+</html>

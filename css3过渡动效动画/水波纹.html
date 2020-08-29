@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>水波纹</title>
+<style>
+*{margin:0;padding:0;}
+li{list-style:none;}
+ul{width:200px;height:200px;margin:150px auto;position:relative;}
+ul li{width:200px;height:200px;position:absolute;box-sizing:border-box;box-shadow:0 0 5px #000;border-radius:50%;}
+ul li:last-child{background:#0ff;color:#fff;text-align:center;font:700 30px/200px "";}
+ul li:nth-child(1){border:2px solid #f00;}
+ul li:nth-child(2){border:2px solid #f80;}
+ul li:nth-child(3){border:2px solid #ff0;}
+ul li:nth-child(4){border:2px solid #0f0;}
+ul li:nth-child(5){border:2px solid #0ff;}
+ul:hover li:nth-child(1){animation:wahaoda 1.5s linear infinite;}
+ul:hover li:nth-child(2){animation:wahaoda 1.5s .3s linear infinite;}
+ul:hover li:nth-child(3){animation:wahaoda 1.5s .6s linear infinite;}
+ul:hover li:nth-child(4){animation:wahaoda 1.5s .9s linear infinite;}
+ul:hover li:nth-child(5){animation:wahaoda 1.5s 1.2s linear infinite;}
+@keyframes wahaoda{
+	0%{transform:scale(1,1);opacity:1;}
+	100%{transform:scale(2,2);opacity:0;}	
+}
+
+
+</style>
+</head>
+<body>
+    <ul>
+    	<li></li>
+    	<li></li>
+    	<li></li>
+    	<li></li>
+    	<li></li>
+    	<li>划过我</li>
+    </ul>
+</body>
+</html>

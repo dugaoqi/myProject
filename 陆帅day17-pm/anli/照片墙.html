@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            background: black;
+            overflow: hidden;
+            perspective: 800px;
+        }
+
+        .box{
+			
+            position: relative;
+            width: 120px;
+            height: 180px;
+            margin: 170px auto;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg);
+			animation:dong 4s linear infinite;
+        }
+
+        .box img{
+            position: absolute;
+            width: 120px;
+            height: 180px;
+            left: 0;
+            top: 0;
+            box-shadow: 0 0 8px #fff;
+            -webkit-box-reflect: below 10px -webkit-linear-gradient(top,rgba(0,0,0,0) 40%,rgba(0,0,0,.7) 100%);
+        }
+        .box p{
+            width: 1200px;
+            height: 1200px;
+            border-radius: 50%;
+            position: absolute;
+            top: 102%;
+            left: 50%;
+            margin-top: -600px;
+            margin-left: -600px;
+            background: radial-gradient(circle,rgba(0,0,0,0), rgba(255,255,255, 0.7));
+            transform: rotateX(90deg);
+        }
+		@keyframes dong{
+			0%{transform:rotateX(-20deg) rotateY(0deg);}
+			100%{transform:rotateX(-20deg) rotateY(360deg);}
+		}
+    </style>
+</head>
+<body>
+        <div class="box" id="box">
+            <img src="img2/1.jpg" alt="">
+            <img src="img2/2.jpg" alt="">
+            <img src="img2/3.jpg" alt="">
+            <img src="img2/4.jpg" alt="">
+            <img src="img2/5.jpg" alt="">
+            <img src="img2/6.jpg" alt="">
+            <img src="img2/7.jpg" alt="">
+            <img src="img2/8.jpg" alt="">
+            <img src="img2/9.jpg" alt="">
+            <img src="img2/10.jpg" alt="">
+            <img src="img2/11.jpg" alt="">
+            <p></p>
+        </div>
+
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var box = document.getElementById("box");
+    var imgs= document.getElementsByTagName("img");
+
+    for (var i = 0, length = imgs.length; i < length; i++) {
+        imgs[i].style.transform = "rotateY(" + i * 360/length + "deg) translateZ(350px)";
+    }
+
+    document.onmousedown = function(ev){
+        ev = ev || event;
+        lastX = ev.clientX;
+        lastY = ev.clientY;
+        this.onmousemove = function( ev ){
+//            var div = document.createElement("div");
+//            div.style.cssText = "position:fixed;width:5px;height:5px;background:red;";
+//            div.style.left = ev.clientX + "px";
+//            div.style.top = ev.clientY + "px";
+
+            ev = ev || event;
+            nowX = ev.clientX;
+            nowY = ev.clientY;
+            var offsetX = nowX - lastX;
+            var offsetY = nowY - lastY;
+
+            rox += offsetY * 0.2;
+            roy -= offsetX * 0.2;
+            box.style.transform = "rotate()"
+
+            document.body.appendChild(div);
+            return false;
+        }
+        this.onmouseup = function(){
+            this.onmousemove = null;
+        }
+    }
+</script>

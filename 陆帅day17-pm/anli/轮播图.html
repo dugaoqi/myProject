@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: relative;
+            margin: 100px auto;
+            width: 600px;
+            height: 100px;
+            border: 2px solid;
+            overflow: hidden;
+        }
+        ul{
+            position: absolute;
+            width: 1200px;
+            height:100px;
+            top: 0;
+            left: 0;
+            animation: banner 4s linear infinite;
+        }
+
+        @keyframes banner {
+            from{
+                left: 0;
+            }
+            to{
+                left: -600px;
+            }
+        }
+        ul li{
+            float: left;
+            list-style: none;
+        }
+        img{
+			display:block;
+            width: 100px;
+
+        }
+
+        #box:hover ul{
+            animation-play-state:paused;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li>
+            <img src="img/w2.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w3.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w4.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w5.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w6.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w7.jpg" alt="">
+        </li>        
+        <li>
+            <img src="img/w2.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w3.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w4.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w5.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w6.jpg" alt="">
+        </li>
+        <li>
+            <img src="img/w7.jpg" alt="">
+        </li>
+    </ul>
+</div>
+</body>
+</html>

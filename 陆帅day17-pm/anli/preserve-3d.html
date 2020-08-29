@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>preserve-3d</title>
+<style>
+*{padding:0;margin:0;}
+.fu{transform-style:preserve-3d;perspective:800px;}
+.zi{transform-style:preserve-3d;transition:4s linear all;transform:scaleZ(3) rotateX(0deg);margin:0 auto;width:320px;height:480px;background:url(images/w5.jpg);}
+.kanp{background:#f99;position:absolute;top:50%;width:100%;transform-origin:top;transform:rotateX(-90deg);}
+span{display:inline-block;position:absolute;top:50%;width:100%;transform-origin:top;transform:rotateX(-90deg) translate(270px,140px);font-size:18px;}
+.fu:hover .zi{transform:scaleZ(3) rotateX(89deg);}
+</style>
+</head>
+
+<body>
+
+
+
+
+
+<div class="fu">
+    <div class="zi">
+    	<img class="kanp" src="images/l.png" >
+        <span>这是你想看的吗？<br/>猥琐的家伙</span>
+    </div>
+</div>
+
+
+
+</body>
+</html>

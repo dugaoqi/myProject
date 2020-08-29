@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无缝滚动</title>
+<style>
+*{margin:0;padding:0;}
+li{list-style:none;}
+
+div{width:640px;height:240px;box-shadow:0 0 5px #000;margin:200px auto;
+overflow:hidden;}
+div ul{width:10000%;animation:lunbo 5s linear infinite;}
+div ul li{float:left;}
+div ul li img{display:block;width:320px;height:240px;}
+div:hover ul{animation-play-state:paused;}
+@keyframes lunbo{
+	0%{margin-left:0;}
+	100%{margin-left:-1600px;}	
+}
+</style>
+</head>
+<body>
+     <div>
+     	<ul>
+               <li><img src="images/a.jpg" /></li>
+            <li><img src="images/b.jpg" /></li>
+            <li><img src="images/c.jpg" /></li>
+            <li><img src="images/d.jpg" /></li>
+            <li><img src="images/e.jpg" /></li>
+            
+            <li><img src="images/a.jpg" /></li>
+            <li><img src="images/b.jpg" /></li>
+     	</ul>
+     </div>
+</body>
+</html>

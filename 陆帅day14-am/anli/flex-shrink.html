@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>flex-shrink 弹性盒子-检索弹性盒的收缩比率</title>
+<style>
+#flex{display:-webkit-flex;display:flex;width:300px;margin:0;padding:0;list-style:none;}
+#flex li{width:200px;height:100px;}
+#flex li:nth-child(1){background:#888;}
+#flex li:nth-child(2){background:#ccc;}
+#flex li:nth-child(3){-webkit-flex-shrink:3;background:#aaa;}
+</style>
+</head>
+
+<body>
+<!--flex-shrink:1 默认是1-->
+<p>li被分成5分 a=20% b=20% c=60% 超出总宽度=300 li宽度=200<br/>
+a宽度=200-300*20%=140<br/>
+b宽度=200-300*20%=140<br/>
+c宽度=200-300*60%=20<br/>
+</p>
+
+<ul id="flex">
+	<li>a</li>
+	<li>b</li>
+	<li>c</li>
+</ul>
+</body>
+</html>

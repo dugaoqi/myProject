@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+.margin{margin:0 auto;width:1140px;}
+
+#banner{height:222px;display:flex;justify-content:center;align-items:center;cursor:pointer;
+background:url(../images/banner.jpg) no-repeat center 20%;
+background-size:cover;}
+
+nav{height:56px;border-top:1px solid #ebebeb;border-bottom:2px solid #e1e1e1;display:flex;justify-content:center;align-items:center;}
+nav ul{display:flex;}
+nav ul li a{padding:0 22px;display:block;height:56px;font:12px/56px "";color:#505050;}
+nav ul li a:hover{border-bottom:2px solid #e67e22;}
+nav lushuai{width:24px;height:4px;border-top:4px solid #505050;border-bottom:4px solid #505050;padding:4px 0;background:#505050;background-clip:content-box;display:none;}
+
+
+
+main{background:#ebebeb;padding-top:35px;}
+main article{width:750px;float:left;}
+main article ul li{height:400px;background:#fff;margin-bottom:35px;}
+
+main aside{width:360px;float:right;}
+main aside ul li{height:240px;background:#fff;margin-bottom:35px;}
+
+@media screen and (max-width:1199px){
+.margin{width:940px;}
+main article{width:616px;}
+main aside{width:294px;}
+
+}
+
+@media screen and (max-width:991px){
+.margin{width:720px;}
+main article{width:auto;float:none;}
+main aside{width:auto;float:none;}
+
+}
+
+@media screen and (max-width:767px){
+.margin{width:auto;margin:0 15px;}
+nav ul{display:none;}
+nav lushuai{display:block;}
+
+}
+
+

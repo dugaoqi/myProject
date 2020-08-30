@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>傻子布局</title>
+<link href="css/public.css" rel="stylesheet" type="text/css">
+<style>
+html,body{height:100%;}
+body{display:flex;justify-content:center;align-items:center;}
+
+ul{display:flex;}
+ul li{width:100px;height:100px;box-shadow:0 0 5px #000;margin:10px;border-radius:5px;display:flex;justify-content:space-between;padding:5px;box-sizing:border-box;}
+ul li i{width:20px;height:20px;background:#000;border-radius:50%;}
+ul li p{display:flex;flex-direction:column;justify-content:space-between;}
+ul li:nth-child(1){justify-content:center;}
+.c{align-self:center;}
+.b{align-self:flex-end;}
+</style>
+</head>
+<body>
+    <ul>
+        <li><i class="c"></i></li>
+        <li><i></i><i class="b"></i></li>
+        <li><i></i><i class="c"></i><i class="b"></i></li>
+        <li>
+        	<p><i></i><i></i></p>
+            <p><i></i><i></i></p>
+        </li>
+        <li>
+            <p><i></i><i></i></p>
+            <i class="c"></i>
+            <p><i></i><i></i></p>
+        </li>
+        <li>
+            <p><i></i><i></i><i></i></p>
+            <p><i></i><i></i><i></i></p>
+        </li>      
+    </ul>
+</body>
+</html>

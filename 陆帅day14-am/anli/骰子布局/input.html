@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>输入框布局</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    .input {
+      display: flex;
+      height: 40px;
+      border: solid 1px #e2e0db;
+    }
+    .input-field {
+      flex: 1;
+      border: 0;
+      outline: none;
+      font-size: 24px;
+      padding: 0 6px;
+    }
+    .input-item {
+      flex: 0 0 40px;
+      background-color: #f3f3f0;
+      line-height: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="input">
+    <input type="text" class="input-field">
+    <span class="input-item">go</span>
+  </div>
+</body>
+</html>

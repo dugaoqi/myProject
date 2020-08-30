@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>动画过度</title>
+<style>
+div{width:100px;height:100px;background:#f99;margin-bottom:20px;}
+.an2{
+-moz-transition:all 2s;
+}
+#d1{-moz-transition-timing-function:linear;}
+#d2{-moz-transition-timing-function:ease;}
+#d3{-moz-transition-timing-function:ease-in;}
+#d4{-moz-transition-timing-function:ease-out;}
+#d5{-moz-transition-timing-function:ease-in-out;}
+#d6{-moz-transition-timing-function:cubic-bezier(.4, 1.9, .4, .5);}
+
+div:hover{width:300px;}
+
+</style>
+</head>
+<body>
+
+<div id="d1" class="an2">linear</div>
+<div id="d2" class="an2">ease</div>
+<div id="d3" class="an2">ease-in</div>
+<div id="d4" class="an2">ease-out</div>
+<div id="d5" class="an2">ease-in-out</div>
+<div id="d6" class="an2">cubic-bezier</div>
+
+</body>
+
+<script>
+setTimeout(function(){
+var oDiv=document.getElementsByTagName("div");
+for(var i=0;i<oDiv.length;i++){
+	oDiv[i].style.width="300px";
+}
+},1000);
+
+</script>
+
+</html>
+
+

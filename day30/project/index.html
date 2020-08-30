@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.pagination.js"></script>
+	<link rel="stylesheet" href="style/pagination.css">
+	<script>
+		
+	$(function(){
+
+		//console.log($(".pagination").pagination);
+
+		$(".pagination").pagination(100,{
+			items_per_page:5,
+			num_display_entries:3,
+			current_page:3,
+			num_edge_entries:5,
+//			link_to:"http://www.baidu.com",
+			
+			prev_text:"shangshang",
+			next_text:"xiaxia",
+			ellipse_text:"***",
+			prev_show_always:true,
+			callback:function(index){
+				console.log(index)
+			}
+		})
+
+	})
+
+	</script>
+</head>
+<body>
+	
+	<div class="pagination">
+		
+	</div>
+
+</body>
+</html>

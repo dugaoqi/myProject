@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>分页插件demo</title>
+    <link rel="stylesheet" href="style/pagination.css"/>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #list {
+            width: 1000px;
+            margin: 10px auto;
+        }
+
+        #list ul {
+            list-style: none;
+        }
+
+        #list ul li {
+            width: 240px;
+            height: 190px;
+            margin-left: 8px;
+            margin-top: 25px;
+            margin-bottom: 5px;
+            position: relative;
+            float: left;
+        }
+
+        #list ul li div.img {
+            padding: 4px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px #cdcdcd;
+            border: 1px solid #cdcdcd;
+            margin-top: 10px;
+        }
+
+        #list ul li div img {
+            width: 230px;
+            height: 180px;
+        }
+
+        #list ul li div.detail {
+            margin: 5px;
+            color: #559999;
+            float: left;
+            width: 240px;
+        }
+
+        #list ul li span.price {
+            float: right;
+            color: #cc0033;;
+            margin-right: 8px;
+        }
+
+        #setPageDiv {
+            clear: left;
+            width: 1000px;
+            margin: 10px auto;
+        }
+
+        .shopping {
+            position: fixed;
+            height: 50px;
+            width: 200px;
+            right: 0px;
+            top: 15px;
+        }
+
+        .shopping-buy-btn {
+            border: 1px dotted #cdcdcd;
+            background-color: #cdcdcd;
+            color: #cc0033;
+            font-size: small;
+            border-radius: 3px;
+            box-shadow: 0 0 5px #cdcdcd;
+
+        }
+
+        .shopping span.showNum {
+            position: absolute;
+            left: 8px;
+            top: -8px;
+            background-color: #f69;
+            color: #FFFFFF;
+            font-size: large;
+            width: 20px;
+            height: 15px;
+            border-radius: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="setPageDiv">
+    <select id="setPage">
+        <option value="4">四条数据</option>
+        <option value="8">八条数据</option>
+        <option value="12">十二条数据</option>
+    </select>
+
+    <div id="Pagination" class="pagination"></div>
+</div>
+<div id="list">
+</div>
+
+
+
+</body>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
+<script type="text/javascript">
+
+
+    $(function(){
+
+        var pag = new Pagination();
+        pag.init();
+
+        $("#setPage").change(function(){
+
+            //console.log($(this).val())
+
+            pag.init($(this).val());
+
+        })
+
+    })
+
+    function Pagination(){
+        this.json = null;
+        this.index = 0;
+        this.showNum = 4;
+    }
+
+    Pagination.prototype.init = function(showNum){
+        if(showNum){
+            this.showNum = showNum;
+        }
+        if(this.json == null){  //获取数据; (如果没有数据才去获取);
+            var that = this;
+            $.ajax("http://127.0.0.1:8020/1805/代码/day31/project/data/list.json")
+            .then(function(res){
+                if(typeof res != "object"){
+                    throw "获取数据失败";
+                }
+                that.json = res;
+                //console.log(that.json);
+                that.usePagination();//使用pagination;
+                that.renderingpage();//渲染页面；
+            })
+        }else{
+             this.usePagination();
+             this.renderingpage()
+        }
+    }
+    Pagination.prototype.usePagination = function(){
+        var that = this;
+        var num = Math.ceil(this.json.length / this.showNum);
+        $("#Pagination").pagination(num,{
+            items_per_page:1,
+            next_text:"下一页",
+            prev_text:"上一页",
+            callback:function(index){
+                that.index = index;
+                that.renderingpage()
+            }
+        })
+
+    }
+
+    Pagination.prototype.renderingpage = function(){
+       var html = "<ul>";
+       var that = this;
+       $.each(this.json,function(index,obj){
+            if(index >= that.index * that.showNum  && index < (that.index+1) * that.showNum){
+                 html += '<li>'+
+                        '<div class="img">'+
+                                '<img src="'+obj.img+'">'+
+                        '</div>'+
+                        '<div class="detail">'+obj.info+'<span class="price">特价'+obj.price+'$</span>'+
+                        '</div>'+
+                    '</li>'
+            }
+       })
+       html += "</ul>";
+       $("#list").html(html);
+    }
+
+
+// 数据来自于后台， 根据json进行页面渲染;
+
+// 初始化分页;
+
+
+</script>
+</html>

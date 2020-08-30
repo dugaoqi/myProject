@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">这是一个div</div>
+		<input type="button" name="btn" id="btn" value="点击" />
+	</body>
+	<script src="../jquery.js"></script>
+	<script type="text/javascript">
+//		var obox = document.getElementById("box")
+//		var div = document.createElement("div")
+//		obox.appendChild(div)
+
+//		var div = $("<div>");
+		
+//		插入到某个元素的最后一个子元素的位置
+//		#box被div插入
+//		$("#box").append(div)
+//		把div插入#box
+//		div.appendTo($("#box"))
+		
+//		$("#box").prepend(div);
+//		div.prependTo($("#box"))
+		
+//		$("#box").before(div)
+//		$("#box").after(div)
+		
+		
+		$("#btn").click(function(){
+			console.log("哈哈哈")
+		})
+		
+		
+		var ipt = $("#btn").clone(true)
+		$("#box").append(ipt)
+		
+		$("#box").replaceWith("<nav>"+ $("#box").html() +"</nav>")
+		
+		var obox = document.getElementById("box")
+		obox.outerHTML = "<nav>"+ obox.innerHTML +"</nav>"
+		
+		
+//		console.log(div)
+		
+	</script>
+</html>

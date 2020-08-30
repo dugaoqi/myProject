@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			.box{width: 400px;height: 300px;border: solid 1px black;margin: 40px auto;position: relative;}
+			.box ul {display: flex;width: 400px;border-bottom: solid 1px black;}
+			.box li{flex: 1;border-right: solid 1px black;text-align: center;line-height: 30px;}
+			.box li.active{background: #eee;}
+			.box .cont{height: 269px;}
+			.cont img{height: 269px;width: 400px;display: none;}
+			.cont img.active{display: block;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div class="cont">
+				<img class="active" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3215319369,774998482&fm=27&gp=0.jpg"/>
+				<img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3375468729,741564053&fm=27&gp=0.jpg"/>
+				<img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=959859669,2860855102&fm=27&gp=0.jpg"/>
+			</div>
+		</div>
+	</body>
+	<script src="libs/require.js" data-main="model/main"></script>
+</html>

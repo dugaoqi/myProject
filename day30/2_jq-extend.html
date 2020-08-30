@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="../jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		一个参数:
+//			必须对象
+//			将传入的对象合并到jq对象上面,可以通过jq的调用方式,来调用传入对象的方法和属性
+				
+//		两个参数:
+//			必须对象
+//			将第二个参数对象合并到第一个参数对象,改变第一个对象,同时返回合并之后的对象为一个新对象
+			
+		
+//		var obj = {
+//			liyang:"好人",
+//			myshow:function(){
+//				console.log(this.liyang)
+//			},
+//			cookie:function(){
+//				console.log("这是我自己写的cookie方法")
+//			}
+//		}
+//		$.extend(obj)
+		
+//		console.dir($)
+//		console.log($.liyang)
+//		$.myshow()
+		
+//		extend是jq专门暴露出来,提供给开发者用来给jq自定义插件的接口方法
+		
+//		$.cookie()
+
+//		var nav = {
+//			index:0,
+//			init:function(){
+//				console.log(this.index)
+//				this.show()
+//			},
+//			show:function(){
+//				console.log("这是我自己写的cookie方法")
+//			}
+//		}
+//		$.extend(nav)
+//		
+//		$.init()
+		
+		
+		var obj = {
+			name:"admin"
+		}
+		var obj2 = {
+			sex:1,
+			age:18
+		}
+		
+		var obj3 = $.extend(obj,obj2);
+		
+		console.log(obj)
+		console.log(obj2)
+		console.log(obj3)
+		
+	</script>
+</html>

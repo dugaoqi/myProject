@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#cv{background: #fff;}
+		</style>
+	</head>
+	<body style="background: #000;">
+		<canvas id="cv" width="500" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+		var ocv = document.getElementById("cv")
+		
+		var o2d = ocv.getContext("2d");
+		
+		o2d.strokeStyle = "red";
+		o2d.lineWidth = 10;
+		
+		var x=y=100;
+		var w=h=100;
+		
+		setInterval(()=>{
+			
+			o2d.clearRect(0,0,ocv.width,ocv.height)
+			o2d.strokeRect(x++,y,w,h)
+			
+		},1000/60)
+		
+	</script>
+</html>

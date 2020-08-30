@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			body{background: #fff;}
+			#cv{background: #000;display: block;}
+		</style>
+	</head>
+	<body>
+		<canvas id="cv"></canvas>
+	</body>
+	<script type="text/javascript">
+		var ocv = document.getElementById("cv");
+		
+		ocv.width = document.documentElement.clientWidth;
+		ocv.height = document.documentElement.clientHeight;
+		
+		var o2d = ocv.getContext("2d")
+		
+		var num = 5;	//一共有几个点
+		var dot = [];	//[{x:0,y:1},{x:?,y:?},.....]
+		var w=h=4;
+		
+		for(var i=0;i<num;i++){
+			dot.push({
+				x:random(0,ocv.width-10),
+				y:random(0,ocv.height-10),
+				speedX:random(-5,5),
+				speedY:random(-5,5)
+			})
+		}
+		
+		o2d.fillStyle = "#fff";
+		o2d.strokeStyle = "#fff";
+		
+		setInterval(()=>{
+			
+			o2d.clearRect(0,0,ocv.width,ocv.height)
+			
+			for(var i=0;i<dot.length;i++){
+				o2d.fillRect(
+					dot[i].x += dot[i].speedX,
+					dot[i].y += dot[i].speedY,
+					w,h
+				)
+				if(dot[i].x<0){
+					dot[i].speedX = -dot[i].speedX;
+				}
+				if(dot[i].y<0){
+					dot[i].speedY = -dot[i].speedY;
+				}
+				if(dot[i].x>ocv.width-w){
+					dot[i].speedX = -dot[i].speedX;
+				}
+				if(dot[i].y>ocv.height-h){
+					dot[i].speedY = -dot[i].speedY;
+				}
+				
+			}
+			
+//			o2d.beginPath()
+			o2d.moveTo(dot[0].x,dot[0].y);
+			for(var i=1;i<dot.length;i++){
+				o2d.lineTo(dot[i].x,dot[i].y)
+			}
+			o2d.closePath();
+			o2d.stroke();
+		
+		},1000/60)
+		
+		
+		
+		
+		
+		
+		
+		function random(a,b){
+			return Math.round(Math.random()*(a-b)+b);
+		}
+		
+	</script>
+</html>

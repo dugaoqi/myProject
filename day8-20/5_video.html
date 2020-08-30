@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#bar{width: 600px;height: 30px;background: #eee;padding: 10px 0;}
+			#bar p{height: 30px;background: red;}
+		</style>
+	</head>
+	<body>
+		<video width="600" id="v1" src="material/2.mp4" poster="https://www.baidu.com/img/bd_logo1.png?where=super" ></video><br />
+		<div id="bar">
+			<p></p>
+		</div>
+		<input type="button" id="btn1" value="播放" />
+		<input type="button" id="btn2" value="暂停" />
+		<input type="button" id="btn3" value="音量+" />
+		<input type="button" id="btn4" value="音量-" />
+		<input type="button" id="btn5" value="静音" />
+		<input type="button" id="btn6" value="取消静音" />
+		<input type="button" id="btn7" value="快进" />
+		<input type="button" id="btn8" value="快退" />
+		<input type="button" id="btn9" value="倍速+" />
+		<input type="button" id="btn10" value="倍速-" />
+		<input type="button" id="btn11" value="全屏" />
+	</body>
+	<script type="text/javascript">
+		var ov = document.getElementById("v1")
+//		console.log(ov)
+		var obtn1 = document.getElementById("btn1")
+		var obtn2 = document.getElementById("btn2")
+		var obtn3 = document.getElementById("btn3")
+		var obtn4 = document.getElementById("btn4")
+		var obtn5 = document.getElementById("btn5")
+		var obtn6 = document.getElementById("btn6")
+		var obtn7 = document.getElementById("btn7")
+		var obtn8 = document.getElementById("btn8")
+		var obtn9 = document.getElementById("btn9")
+		var obtn10 = document.getElementById("btn10")
+		var obtn11 = document.getElementById("btn11")
+		
+		var obar = document.getElementById("bar")
+		var op = obar.children[0];
+		
+		obtn1.onclick = function(){ov.play()}
+		obtn2.onclick = function(){ov.pause()}
+		obtn3.onclick = function(){
+			if(ov.volume >= 1){
+				ov.volume = 1
+			}else{
+				ov.volume += 0.2;
+			}
+			console.log(ov.volume)
+		}
+		obtn4.onclick = function(){
+			if(ov.volume <= 0){
+				ov.volume = 0
+			}else{
+				ov.volume = parseFloat((ov.volume - 0.2).toFixed(2))
+			}
+			console.log(ov.volume)
+		}
+		obtn5.onclick = function(){
+			ov.muted = true;
+		}
+		obtn6.onclick = function(){
+			ov.muted = false;
+		}
+		obtn7.onclick = function(){
+			ov.currentTime += 5;
+		}
+		obtn8.onclick = function(){
+			ov.currentTime -= 5;
+		}
+		obtn9.onclick = function(){
+			if(ov.playbackRate>=8){
+				ov.playbackRate = 8
+			}else{
+				ov.playbackRate++
+			}
+		}
+		obtn10.onclick = function(){
+			if(ov.playbackRate<=0){
+				ov.playbackRate = 0
+			}else{
+				ov.playbackRate--
+			}
+		}
+		obtn11.onclick = function(){
+			ov.webkitRequestFullScreen()
+		}
+		
+		ov.ontimeupdate = function(){
+			var bili = ov.currentTime/ov.duration;
+			op.style.width = bili * obar.offsetWidth + "px";
+		}
+		
+		obar.onmousedown = function(e){
+			var l = e.clientX - obar.offsetLeft;
+			op.style.width = l + "px";
+			ov.currentTime = (l/obar.offsetWidth) * ov.duration;
+			
+			document.onmousemove = function(e){
+				var l = e.clientX - obar.offsetLeft;
+				
+				if(l >= obar.offsetWidth){
+					l = obar.offsetWidth
+				}
+				
+				ov.currentTime = (l/obar.offsetWidth) * ov.duration;
+				
+				op.style.width = l + "px";
+			}
+			document.onmouseup = function(){
+				document.onmousemove = document.onmouseup = null
+			}
+		}
+		
+		ov.onended = function(){
+			alert("video终于结束了")
+		}
+		
+		
+	</script>
+</html>

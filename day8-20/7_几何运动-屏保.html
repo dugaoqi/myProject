@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			body{background: #fff;}
+			#cv{background: #000;display: block;}
+		</style>
+	</head>
+	<body>
+		<canvas id="cv"></canvas>
+	</body>
+	<script type="text/javascript">
+		var ocv = document.getElementById("cv");
+		
+		ocv.width = document.documentElement.clientWidth;
+		ocv.height = document.documentElement.clientHeight;
+		
+		var o2d = ocv.getContext("2d")
+		
+		var num = 200;	//一共有几个点
+		var dot = [];	//每个点，[{x:0,y:1},{x:?,y:?},.....]
+		var w=h=1;		//点的大小
+		
+		var LEN = 10;	//尾巴的数量
+		var tail = []	//尾巴的总数组，[[{},{},{},{},{}],[{},{},{},{},{}],......]
+		
+//		随机生成点
+		for(var i=0;i<num;i++){
+			dot.push({
+				x:random(0,ocv.width-w),
+				y:random(0,ocv.height-h),
+				speedX:random(-5,5),
+				speedY:random(-5,5)
+			})
+		}
+		
+//		配置初始颜色
+		o2d.fillStyle = "#fff";
+		o2d.strokeStyle = "#fff";
+		
+//		开启计时器
+		setInterval(()=>{
+//			清除上一次的图形
+			o2d.clearRect(0,0,ocv.width,ocv.height)
+//			绘制点
+			for(var i=0;i<dot.length;i++){
+				o2d.fillRect(
+					dot[i].x += dot[i].speedX,
+					dot[i].y += dot[i].speedY,
+					w,h
+				)
+//				运动的过程中的边界限定
+				if(dot[i].x<0){
+					dot[i].speedX = -dot[i].speedX;
+				}
+				if(dot[i].y<0){
+					dot[i].speedY = -dot[i].speedY;
+				}
+				if(dot[i].x>ocv.width-w){
+					dot[i].speedX = -dot[i].speedX;
+				}
+				if(dot[i].y>ocv.height-h){
+					dot[i].speedY = -dot[i].speedY;
+				}
+			}
+//			第一条线的连线
+			o2d.beginPath()
+			o2d.moveTo(dot[0].x,dot[0].y);
+			for(var i=1;i<dot.length;i++){
+				o2d.lineTo(dot[i].x,dot[i].y)
+			}
+			o2d.closePath();
+			o2d.stroke();
+			
+//			tail.push(dot);
+//			对象的深浅拷贝会影响尾巴的绘制
+//			要使用对象的深拷贝储存尾巴
+			var smallTail = [];
+			for(var i=0;i<dot.length;i++){
+				smallTail.push({
+					x:dot[i].x,
+					y:dot[i].y,
+					speedX:dot[i].speedX,
+					speedY:dot[i].speedY
+				});
+			}
+			tail.push(smallTail)
+//			固定一共储存几条尾巴,超过,删除第一个
+			if(tail.length > LEN){
+				tail.splice(0,1)
+			}
+//			遍历所有尾巴
+			for(var i=0;i<tail.length;i++){
+				o2d.fillStyle = "rgba(255,255,255,"+ i/LEN +")";	//给尾巴的点设置不同的透明度
+//				绘制尾巴的点
+//				for(var j=0;j<tail[i].length;j++){
+//					o2d.fillRect(
+//						tail[i][j].x,
+//						tail[i][j].y,
+//						w,h
+//					)
+//				}
+//				连接每条尾巴的线
+				o2d.strokeStyle = "rgba(255,255,255,"+ i/LEN +")";	//给尾巴的线设置不同的透明度
+				o2d.beginPath()
+				o2d.moveTo(tail[i][0].x,tail[i][0].y);
+				for(var j=1;j<tail[i].length;j++){
+					o2d.lineTo(tail[i][j].x,tail[i][j].y)
+				}
+				o2d.closePath();
+				o2d.stroke();
+			}
+		
+		},1000/60)
+		
+		function random(a,b){
+			return Math.round(Math.random()*(a-b)+b);
+		}
+		
+	</script>
+</html>

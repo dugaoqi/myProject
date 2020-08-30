@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			body{background: #000;}
+			#cv{background: #FFF;display: block;}
+			
+			input{position: absolute;left: 0;}
+			input:nth-child(1){top: 0;}
+			input:nth-child(2){top: 40px;}
+		</style>
+	</head>
+	<body>
+		<input type="text" name="" id="strong" value="" />
+		<input type="color" name="" id="color" />
+		
+		<input type="button" name="btn" id="btn" value="点击擦除中间区域" />
+		
+		<canvas id="cv"></canvas>
+	</body>
+	<script type="text/javascript">
+		var ocv = document.getElementById("cv")
+		ocv.width = document.documentElement.clientWidth;
+		ocv.height = document.documentElement.clientHeight;
+		
+		var ostr = document.getElementById("strong")
+		var ocolor = document.getElementById("color")
+		
+		var w = 1;
+		var c = "#000";
+		
+		ostr.oninput = function(){
+			w = this.value
+		}
+		
+		ocolor.oninput = function(){
+			c = this.value
+		}
+		
+		
+		var abc = ocv.getContext("2d");
+		
+		ocv.onmousedown = function(e){
+			abc.lineWidth = w;
+			abc.strokeStyle = c;
+			abc.beginPath()
+			abc.moveTo(e.offsetX,e.offsetY)
+			ocv.onmousemove = function(e){
+				abc.lineTo(e.offsetX,e.offsetY)
+				abc.stroke();
+			}
+			ocv.onmouseup = function(){
+				ocv.onmousemove = ocv.onmouseup = null
+			}
+		}
+		
+		var obtn = document.getElementById("btn")
+		obtn.onclick = function(){
+			
+			abc.clearRect(0,0,ocv.width,ocv.height)
+			
+		}
+		
+	</script>
+</html>

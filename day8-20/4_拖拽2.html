@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{width: 100px;height: 100px;background: blue;position: absolute;}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script type="text/javascript">
+		
+		var obox = document.getElementById("box")
+		
+		
+		window.onstorage = function(){
+			var pos = JSON.parse(localStorage.pos)
+			
+			obox.style.left = pos.x + "px"
+			obox.style.top = pos.y + "px"
+			
+		}
+		
+		
+		obox.onmousedown = function(e){
+			var disX = e.offsetX
+			var disY = e.offsetY
+			document.onmousemove = function(e){
+				obox.style.left = e.clientX - disX + "px";
+				obox.style.top = e.clientY - disY + "px";
+				
+				var pos = {
+					x:e.clientX - disX,
+					y:e.clientY - disY
+				}
+				
+				localStorage.pos = JSON.stringify(pos)
+				
+			}
+			document.onmouseup = function(){
+				document.onmousemove = document.onmouseup = null
+			}
+		}
+		
+	</script>
+</html>

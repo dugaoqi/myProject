@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#cv{background: #fff;}
+		</style>
+	</head>
+	<body style="background: #000;">
+		<canvas id="cv" width="500" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+		var ocv = document.getElementById("cv");
+		var o2d = ocv.getContext("2d");
+		
+////		画笔配置
+//		o2d.strokeStyle = "red";
+//		o2d.fillStyle = "yellow"
+//		o2d.lineWidth = 20;
+////		连线
+//		o2d.moveTo(98,122);
+//		o2d.lineTo(150,327);
+//		o2d.lineTo(392,125);
+//		o2d.closePath()
+////		描边
+//		o2d.fill()
+//		o2d.stroke();
+		
+//		o2d.strokeStyle = "red";
+//		o2d.lineWidth = 20;
+//		o2d.moveTo(100,100);
+//		o2d.lineTo(100,300);
+//		o2d.stroke();
+//		
+//		o2d.strokeStyle = "#000";
+//		o2d.beginPath()
+//		o2d.moveTo(200,100);
+//		o2d.lineTo(200,300);
+//		
+//		o2d.stroke();
+		
+		
+//		配置
+//		开启新路径
+//		画线
+//		闭合路径
+//		着色
+
+////		配置
+//		o2d.strokeStyle = "red";
+//		o2d.lineWidth = 20;
+////		开启新路径
+//		o2d.beginPath()
+////		画路径
+//		o2d.moveTo(100,100)
+//		o2d.lineTo(100,300)
+//		o2d.lineTo(300,300)
+//		o2d.lineTo(300,100)
+////		闭合路径
+//		o2d.closePath()
+////		着色
+//		o2d.stroke()
+		
+		o2d.strokeStyle = "red";
+		o2d.fillStyle = "pink";
+		o2d.lineWidth = 20;
+		
+		o2d.strokeRect(100,100,300,200)
+//		o2d.fillRect(100,100,300,200)
+//		o2d.rect(100,100,300,200)
+		
+		o2d.fill()
+//		o2d.stroke()
+	</script>
+</html>

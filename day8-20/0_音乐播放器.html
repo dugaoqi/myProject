@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li a.active{
+				background: url(mp3/play.gif) no-repeat right center;padding-right: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="cont">
+			<audio src="" controls id="a1"></audio>
+			<ul id="list"></ul>
+			<input type="button" name="" id="btn1" value="单曲" />
+			<input type="button" name="" id="btn2" value="循环" />
+			<input type="button" name="" id="btn3" value="顺序" />
+			<input type="button" name="" id="btn4" value="随机" />
+		</div>-->
+	</body>
+	<script type="text/javascript">
+		
+//		歌曲列表
+//		是否显示控件
+//		播放模式:单曲,循环,随机,顺序
+//		双击播放
+		
+		class Music{
+			constructor(options){
+//				所有参数都可选
+				if(options.cont){
+					this.cont = options.cont;
+				}else{
+					this.cont = document.createElement("div")
+					document.body.appendChild(this.cont)
+				}
+				
+				this.list = options.list || this.createEle("ul");
+				this.oa = options.myaudio || new Audio();
+				this.btn1 = options.btn1 || this.createEle("input");
+				this.btn2 = options.btn2 || this.createEle("input");
+				this.btn3 = options.btn3 || this.createEle("input");
+				this.btn4 = options.btn4 || this.createEle("input");
+				this.status = options.status || 1;
+				
+				this.btn1.value = "单曲";
+				this.btn2.value = "循环";
+				this.btn3.value = "顺序";
+				this.btn4.value = "随机";
+				
+//				数据
+				this.res = ["千千阙歌","时间都去哪儿了","小苹果","夜的钢琴曲","雨的印记"];
+//				正在播放第几首歌
+				this.index = 0;
+//				渲染页面
+				this.load();
+//				下一首
+				this.end();
+			}
+//			自己封装的当用户不传参的时候,快速创建元素
+			createEle(ele){
+				var div = document.createElement(ele);
+				if(ele == "input"){
+					div.type = "button"
+				}
+				this.cont.appendChild(div);
+				return div;
+			}
+//			渲染页面
+			load(){
+				var str = ""
+				for(var i=0;i<this.res.length;i++){
+					str += `<li><a href="javascript:;">${this.res[i]}</a></li>`;
+				}
+				this.list.innerHTML = str;
+				this.a = this.list.getElementsByTagName("a")
+				this.init();
+			}
+//			绑定事件
+			init(){
+				var that = this;
+//				绑定双击播放事件
+				this.list.ondblclick = function(e){
+					if(e.target.nodeName == "A"){
+						for(var i=0;i<that.a.length;i++){
+							that.a[i].className = "";
+						}
+						e.target.className = "active";
+					}
+					that.index = that.res.indexOf(e.target.innerHTML)
+					
+					that.oa.src = `mp3/${that.res[that.index]}.mp3`;
+					that.oa.play();
+				}
+//				绑定点击修改播放状态事件
+				this.btn1.onclick = function(){that.status = 1}
+				this.btn2.onclick = function(){that.status = 2}
+				this.btn3.onclick = function(){that.status = 3}
+				this.btn4.onclick = function(){that.status = 4}
+			}
+//			播放方法，及修改当前项方法
+			play(){
+				this.oa.src = `mp3/${this.res[this.index]}.mp3`;
+				this.oa.play();
+				for(var i=0;i<this.a.length;i++){
+					this.a[i].className = "";
+				}
+				this.a[this.index].className = "active";
+			}
+//			当播放结束后,执行播放状态
+			end(){
+				var that = this;
+				this.oa.onended = function(){
+					that.type();
+				}
+			}
+//			判断播放状态
+			type(){
+				switch(this.status){
+					case 1:
+						this.oa.play();break;
+					case 2:
+						if(this.index == this.res.length-1){
+							this.index = 0
+						}else{
+							this.index++
+						}
+						this.play()
+						break;
+					case 3:
+						if(this.index != this.res.length-1){
+							this.index++
+							this.play()
+						}
+						break;
+					case 4:
+						this.index = Math.round(Math.random()*(this.res.length-1));
+						this.play()
+				}
+			}
+		}
+		
+		new Music({
+			cont:document.getElementById("cont"),
+			list:document.getElementById("list"),
+			myaudio:document.getElementById("a1"),
+			btn1:document.getElementById("btn1"),
+			btn2:document.getElementById("btn2"),
+			btn3:document.getElementById("btn3"),
+			btn4:document.getElementById("btn4"),
+			status:1
+		})
+		
+		
+	</script>
+</html>

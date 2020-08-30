@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#cont{width: 1000px;overflow: hidden;border: solid 1px black;margin: 30px auto;}
+			.box{width: 250px;border: solid 1px black;box-sizing: border-box;text-align: center;float: left;}
+			.box img{width: 60%;display: block;margin: 10px auto;}
+			.box span{display: block;color: red;}
+			.box p{height: 52px;overflow: hidden;font-size: 18px;line-height: 26px;}
+			.box em{display: block;width: 120px;line-height: 30px;color: #fff;background: blue;margin: 10px auto;}
+		</style>
+	</head>
+	<body>
+		<h2>这是商品列表<small><a href="car.html">去购物车</a></small></h2>
+		<div id="cont">
+		</div>
+	</body>
+	<script src="data/goods.js" type="text/javascript" charset="utf-8"></script>
+	<script src="cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		var ocont = document.getElementById("cont");
+		
+		for(var i=0;i<json.length;i++){
+			ocont.innerHTML += "<div class='box' index='"+ json[i].goodsId +"'>"+
+									"<img src='"+ json[i].src +"'>"+
+									"<span>"+ json[i].price +"</span>"+
+									"<p>"+ json[i].name +"</p>"+
+									"<em>加入购物车</em>"
+								"</div>";
+		}
+		
+		ocont.onclick = function(eve){
+			var e = eve || window.event;
+			var target = e.target || e.srcElement;
+			if(target.nodeName == "EM"){
+				var index = target.parentNode.getAttribute("index")
+				setCookie(index,index,1)
+			}
+		}
+		
+
+	</script>
+</html>

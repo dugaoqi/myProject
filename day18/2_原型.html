@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		function Tab(name,skill){
+//			this.name = name
+//			this.skill = skill
+////			this.show = function(){
+////				console.log(this.name + this.skill)
+////			}
+//		}
+//		Tab.prototype.show = function(){
+//			console.log("你好")
+//		}
+//		console.dir(Tab.prototype)
+//		
+//		console.dir(Array.prototype)
+		
+//		自己的prototype，很干净，什么都没有
+//		系统的prototype，啥都有，而且，人家的啥都有，是，每次new创建的话，方法都相等
+		
+//		原型对象：内存储了，自身，父级，通过对象存储的
+//		constructor：指向自身的指针
+//		__proto__：指向父级的指针（原型指针）
+		
+//		var arr1 = new Array(1,2,3)
+//		var arr2 = new Array("a","b","c")
+//		arr1.push("hahaha")
+//		arr2.push("heiheihei")
+//		console.log(arr1.push == arr2.push)
+		
+//		var t1 = new Tab("张三","铁匠")
+//		var t2 = new Tab("李四","木匠")
+//		
+//		t1.show()
+//		t2.show()
+//		
+//		console.log(t1 == t2)
+//		console.log(t1.show == t2.show)
+		
+		
+		function People(name,age){
+			this.name = name;
+			this.age = age;
+//			this.init();
+			this.showName()
+//			this.showAge()
+		}
+		People.prototype.showName = function(){
+			console.log(this.name)
+			this.showAge()
+		}
+		People.prototype.showAge = function(){
+			console.log(this.age)
+		}
+//		People.prototype.init = function(){
+//			this.showName()
+//			this.showAge()
+//		}
+		
+		
+		new People("张三",18)
+		new People("李四",19)
+//		var a = new People("张三",18)
+//		var b = new People("李四",19)
+//		a.showName()
+//		b.showName()
+//		a.showAge()
+//		b.showAge()
+
+//		a.init()
+//		b.init()
+		
+		
+		
+		
+	</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="" id="txt" value="" />
+		<input type="button" name="" id="btn" value="" />
+	</body>
+	<script type="text/javascript">
+		var obtn = document.getElementById("btn")
+		var otxt = document.getElementById("txt")
+//			1.可以数字开头
+//		    2.在6~18位之间
+//		    3.纯数字,差
+//		    4,数字+字母,中
+//		    5,三种,难
+//		数字，字母，特殊字符
+		obtn.onclick = function(){
+			var str = otxt.value;
+			if(str.length >= 6 && str.length <= 18){
+				var a = false;
+				var b = false;
+				var c = false;
+				for(var i=0;i<str.length;i++){
+					if(str[i].charCodeAt()>=48 && str[i].charCodeAt()<=57){
+						a = true;
+					}
+					if((str[i].charCodeAt()>=65 && str[i].charCodeAt()<=90) || (str[i].charCodeAt()>=97 && str[i].charCodeAt()<=122)){
+						b = true
+					}
+					if(str[i].charCodeAt()>=32 && str[i].charCodeAt()<=47){
+						c = true
+					}
+				}
+				
+				if(a && b && c){
+					console.log("难")
+				}else if(a && b && !c){
+					console.log("一般")
+				}else if(a && !b && !c){
+					console.log("简单")
+				}
+				
+			}else{
+				console.log("长度不符！！（6~18）")
+			}
+		}
+	</script>
+</html>

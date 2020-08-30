@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			.box{width: 500px;height: 300px;margin: 50px auto;border: solid 1px black;}
+			.box ul{display: flex;border-bottom: solid 1px black;}
+			.box ul li{flex: 1;line-height: 40px;text-align: center;border-right: solid 1px black;}
+			.box ul li.active{background: #ccc;}
+			.box #cont{height: 259px;}
+			#cont p{height: 259px;display: none;}
+			#cont p:nth-child(1){background: red;}
+			#cont p:nth-child(2){background: yellow;}
+			#cont p:nth-child(3){background: blue;}
+			#cont p.active{display: block;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div id="cont">
+				<p class="active">1111</p>
+				<p>2222</p>
+				<p>33333</p>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+//		OOA
+//			精密分工协作
+//			大目标拆成小目标
+
+//			点击按钮,切换内容
+//			绑定点击事件↓
+//			改变当前项的索引↓
+//			根据索引切换内容
+		
+//		OOD
+//			function Tab(){
+////				存属性
+//			}
+//			Tab.prototype.init = function(){
+////				绑定事件
+////				触发事件的时候,要改变索引
+//				this.changeIndex()
+//			}
+//			Tab.prototype.changeIndex = function(){
+////				索引被改变
+////				改变了索引,根据索引显示当前项
+//				this.display()
+//			}
+//			Tab.prototype.display = function(){
+////				显示当前项
+//			}
+		
+//		OOP
+			function Tab(){
+				this.ali = document.querySelectorAll("li")
+				this.ap = document.querySelectorAll("p")
+				this.index = 0;
+				
+				this.init()
+			}
+			Tab.prototype.init = function(){
+				var that = this
+//				绑定事件
+				for(var i=0;i<this.ali.length;i++){
+					this.ali[i].index = i
+					this.ali[i].onclick = function(){
+//						触发事件的时候,要改变索引
+						that.changeIndex(this.index)
+					}
+				}
+			}
+			Tab.prototype.changeIndex = function(liyang){
+//				索引被改变
+				this.index = liyang
+//				改变了索引,根据索引显示当前项
+				this.display()
+			}
+			Tab.prototype.display = function(){
+//				显示当前项
+				for(var i=0;i<this.ali.length;i++){
+					this.ali[i].className = ""
+					this.ap[i].className = ""
+				}
+				this.ali[this.index].className = "active";
+				this.ap[this.index].className = "active";
+			}
+			
+			new Tab()
+			
+	</script>
+</html>

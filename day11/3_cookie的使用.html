@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		这是自己的页面
+	</body>
+	<script type="text/javascript">
+		
+//		console.log(document.cookie)
+		
+//		一条代码只能设置一个cookie
+//		document.cookie = "name=admin";
+//		document.cookie = "pass=123456";
+//		document.cookie = "pass2=123456";
+//		document.cookie = "name=root";
+
+		var d = new Date()
+		
+		d.setDate(d.getDate()-1)
+		
+		console.log(d)
+		
+		document.cookie = "pass2=123456;expires="+d;
+	</script>
+</html>

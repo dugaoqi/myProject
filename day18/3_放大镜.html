@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#s_box{width: 400px;height: 300px;position: absolute;left: 50px;top: 100px;}
+			#s_box img{width:400px;height: 300px;display: block;}
+			#s_box span{position: absolute;left: 0;top: 0;width: 100px;height: 100px;background: rgba(200,200,200,.6);display: none;z-index: 1;}
+			/*小灰块闪动的解决方式1*/
+			#s_box p{position: absolute;left: 0;top: 0;margin: 0;width: 400px;height: 300px;z-index: 2;}
+			
+			#b_box{width: 400px;height: 300px;position: absolute;left: 500px;top: 100px;display: none;overflow: hidden;}
+			#b_box img{width: 800px;position: absolute;left: 0;top: 0;}
+		</style>
+	</head>
+	<body>
+		<div id="s_box">
+			<img src="img/1.jpg"/>
+			<span></span>
+			<p></p>
+		</div>
+		<div id="b_box">
+			<img src="img/1.jpg"/>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var oSbox = document.getElementById("s_box");
+		var oBbox = document.getElementById("b_box");
+		var oBimg = oBbox.children[0];
+		var oPbox = document.querySelector("span");
+		
+		oSbox.onmouseover = function(){
+			oBbox.style.display = "block";
+			oPbox.style.display = "block";
+			
+			oSbox.onmousemove = function(eve){
+				var e = eve || window.event;
+//				小灰块闪动的解决方式2
+//				oPbox.style.left = e.clientX - oSbox.offsetLeft - oPbox.offsetWidth/2 + "px";
+//				oPbox.style.top = e.clientY - oSbox.offsetTop - oPbox.offsetHeight/2 + "px";
+//				计算小灰块的位置
+				var l = e.offsetX - oPbox.offsetWidth/2;
+				var t = e.offsetY - oPbox.offsetHeight/2;
+//				小灰块的边界限定
+				if(l<0) l=0;
+				if(t<0) t=0;
+				if(l>oSbox.offsetWidth-oPbox.offsetWidth){
+					l=oSbox.offsetWidth-oPbox.offsetWidth
+				}
+				if(t>oSbox.offsetHeight-oPbox.offsetHeight){
+					t=oSbox.offsetHeight-oPbox.offsetHeight
+				}
+//				生效
+				oPbox.style.left = l + "px";
+				oPbox.style.top = t + "px";
+//				计算小灰块移动的距离的比例
+				var x = oPbox.offsetLeft / (oSbox.offsetWidth-oPbox.offsetWidth);
+				var y = oPbox.offsetTop / (oSbox.offsetHeight-oPbox.offsetHeight);
+//				根据比例生成右边移动大图的距离
+				oBimg.style.left = -x * (oBimg.offsetWidth - oBbox.offsetWidth) + "px";
+				oBimg.style.top = -y * (oBimg.offsetHeight - oBbox.offsetHeight) + "px";
+			}
+		}
+		
+		oSbox.onmouseout = function(){
+			oBbox.style.display = "none";
+			oPbox.style.display = "none";
+		}
+		
+		
+	</script>
+</html>

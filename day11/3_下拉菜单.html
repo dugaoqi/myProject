@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			#cont{width: 300px;margin: 40px auto;}
+			input{width: 296px;height: 40px;}
+			ul{background: #eee;display: none;}
+			ul li{line-height: 30px;text-indent: 20px;border-bottom: solid 1px black;}
+			ul li.active{background: #ccc;}
+		</style>
+	</head>
+	<body>
+		<div id="cont">
+			<input type="text" name="" id="txt" value="" />
+			<ul>
+				<li>选项1</li>
+				<li>选项2</li>
+				<li>选项3</li>
+				<li>选项4</li>
+				<li>选项5</li>
+				<li>选项6</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var otxt = document.getElementById("txt")
+		var olist = document.querySelector("ul")
+		var ali = olist.children;
+		var index = -1;
+		
+		otxt.onfocus = function(){
+			olist.style.display = "block"
+		}
+		otxt.onblur = function(){
+			olist.style.display = "none"
+		}
+		
+		otxt.onkeydown = function(eve){
+			var e = eve || window.event
+			var code = e.keyCode || e.which;
+			if(code == 38){
+				if(index == 0 || index == -1){
+					index = ali.length-1;
+				}else{
+					index--;
+				}
+			}
+			if(code == 40){
+				if(index == ali.length-1){
+					index = 0;
+				}else{
+					index++;
+				}
+			}
+			select()
+		}
+		
+		function select(){
+			for(var j=0;j<ali.length;j++){
+				ali[j].className = "";
+			}
+			ali[index].className = "active"
+			otxt.value = ali[index].innerHTML
+		}
+		
+		for(var i=0;i<ali.length;i++){
+			
+			ali[i].liyang = i;
+			
+			ali[i].onmouseover = function(){
+				index = this.liyang;
+				
+				select()
+			}
+			ali[i].onmouseout = function(){
+				this.className = ""
+			}
+		}
+	</script>
+</html>

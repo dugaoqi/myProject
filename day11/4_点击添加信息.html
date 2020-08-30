@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="" id="txt1" value="" />
+		<input type="text" name="" id="txt2" value="" />
+		<input type="button" name="" id="btn" value="添加" />
+		<table border="1" cellspacing="0" align="center" width="700">
+			<thead>
+				<tr>
+					<td>学号</td>
+					<td>姓名</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<!--<tr>
+					<td>data</td>
+					<td>data</td>
+					<td><span>删除</span></td>
+				</tr>-->
+			</tbody>
+		</table>
+	</body>
+	<script type="text/javascript">
+		var otxt1 = document.getElementById("txt1")
+		var otxt2 = document.getElementById("txt2")
+		var obtn = document.getElementById("btn")
+		var otbody = document.querySelector("tbody")
+		
+		obtn.onclick = function(){
+//			var td1 = document.createElement("td")
+//			td1.innerHTML = otxt1.value;
+//			var td2 = document.createElement("td")
+//			td2.innerHTML = otxt2.value;
+//			var td3 = document.createElement("td")
+//			td3.innerHTML = "<span>删除</span>";
+//			var tr = document.createElement("tr")
+//			tr.appendChild(td1)
+//			tr.appendChild(td2)
+//			tr.appendChild(td3)
+//			otbody.appendChild(tr)
+			
+			otbody.innerHTML += "<tr>"+
+									"<td>"+ otxt1.value +"</td>"+
+									"<td>"+ otxt2.value +"</td>"+
+									"<td><span>删除</span></td>"+
+								"</tr>"
+			
+			
+			var aspan = document.querySelectorAll("td span");
+			
+			for(var i=0;i<aspan.length;i++){
+				aspan[i].onclick = function(){
+					this.parentNode.parentNode.remove()
+				}
+			}
+		}
+		
+	</script>
+</html>

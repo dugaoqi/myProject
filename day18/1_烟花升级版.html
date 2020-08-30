@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#container{
+				width: 80%;
+				height: 600px;
+				border: 2px solid red;
+				background: #000;
+				margin:20px auto;
+				cursor: pointer;
+				position: relative;
+				left: 0;
+				top: 0;
+				overflow: hidden;
+			}
+			.fire{
+				width: 10px;
+				height:10px;
+				position: absolute;
+				bottom: 0;
+			}
+			.small-fire{
+				width: 10px;
+				height:10px;
+				position: absolute;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+	<script src="../move.3.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function Fire(pos,ele){
+			this.x = pos.x;
+			this.y = pos.y;
+			this.cont = ele;
+			
+			this.create()
+		}
+		Fire.prototype.create = function(){
+			this.fire = document.createElement("div")
+			this.fire.className = "fire";
+			this.fire.style.background = this.randomColor();
+			this.fire.style.left = this.x + "px";
+			this.cont.appendChild(this.fire)
+			
+			this.move()
+		}
+		Fire.prototype.move = function(){
+			var that = this;
+			move(this.fire,{top:this.y},function(){
+				that.fire.remove()
+				that.createSmall()
+			})
+		}
+		Fire.prototype.createSmall = function(){
+			var num = 12;
+			var r = this.random(100,200);
+			
+			for(var i=0;i<num;i++){
+				let div = document.createElement("div")
+				div.className = "small-fire";
+				div.style.background = this.randomColor()
+				div.style.left = this.x + "px";
+				div.style.top = this.y + "px";
+				div.setAttribute("index",i)
+				this.cont.appendChild(div);
+				
+				var target = {
+					x:Math.round(Math.sin(Math.PI/180 * (30*i)) * r + this.x),
+					y:Math.round(Math.cos(Math.PI/180 * (30*i)) * r + this.y)
+				}
+				
+				move(div,{left:target.x,top:target.y},function(){
+					div.remove()
+				})
+			}
+		}
+		
+		Fire.prototype.randomColor = function(){
+			return `rgb(${this.random(0,255)},${this.random(0,255)},${this.random(0,255)})`
+		}
+		Fire.prototype.random = function(a,b){
+			return Math.round(Math.random()*(a-b)+b)
+		}
+		
+		var ocont = document.getElementById("container");
+		ocont.onclick = function(eve){
+			var e = eve || window.event;
+			var pos = {
+				x:e.offsetX,
+				y:e.offsetY
+			}
+			new Fire(pos,this)
+		}
+	</script>
+</html>

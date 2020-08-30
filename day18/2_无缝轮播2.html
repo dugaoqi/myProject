@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.cont{width: 1130px;height: 300px;margin: 50px auto;position: relative;background: #eee;overflow: hidden;}
+			
+			.cont a{position: absolute;left: 1130px;top: 0;}
+			.cont a:nth-child(1){left: 0;}
+			.cont a img{width: 1130px;height: 300px;display: block;}
+			
+			input{position: absolute;top: 125px;width: 50px;height: 50px;border: none;background: rgba(255,255,255,.6);z-index: 999999999;font-size: 30px;color: #222;}
+			input:nth-child(4){left: 0;}
+			input:nth-child(5){left: 500px;}
+		</style>
+	</head>
+	<body>
+		<div class="cont">
+			<a href=""><img src="https://img.zcool.cn/community/019cea5b4d53cea8012036be4f3813.png@1380w"/></a>
+			<a href=""><img src="https://img.zcool.cn/community/019fb95b4d5627a8012036bebdebd1.jpg@1380w"/></a>
+			<a href=""><img src="https://img.zcool.cn/community/01f9d85b4d53b8a8012036beaf6074.png@1380w"></a>
+			<input type="button" name="" id="prev" value="<<" />
+			<input type="button" name="" id="next" value=">>" />
+		</div>
+	</body>
+	<script src="move.3.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		var ocont = document.querySelector(".cont")
+		var achild = ocont.getElementsByTagName("a");
+		var onext = document.getElementById("next")
+		
+		var index = 0;					//要显示的，（下一张）
+		var iPrev = achild.length-1;	//要离开的，（上一张）
+		
+		onext.onclick = function(){
+			if(index == achild.length-1){	//当要显示的是最后一张了，再次点击的话。。。
+				index = 0;					//设置成第一张
+				iPrev = achild.length-1;	//要离开的就是最后一张
+			}else{
+				index++;					//下一张的索引，下一张+1
+				iPrev = index-1;			//上一张的索引，下一张-1
+			}
+//			console.log(iPrev,index)
+			
+			achild[iPrev].style.left = 0;
+			move(achild[iPrev],{left:-achild[0].offsetWidth});
+			
+			achild[index].style.left = achild[0].offsetWidth + "px";
+			move(achild[index],{left:0});
+		}
+		
+		
+	</script>
+</html>

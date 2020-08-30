@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			.box{width: 500px;height: 300px;margin: 50px auto;border: solid 1px black;}
+			.box ul{display: flex;border-bottom: solid 1px black;}
+			.box ul li{flex: 1;line-height: 40px;text-align: center;border-right: solid 1px black;}
+			.box ul li.active{background: #ccc;}
+			.box #cont{height: 259px;}
+			#cont p{height: 259px;display: none;}
+			#cont p:nth-child(1){background: red;}
+			#cont p:nth-child(2){background: yellow;}
+			#cont p:nth-child(3){background: blue;}
+			#cont p.active{display: block;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<div id="cont">
+				<p class="active">1111</p>
+				<p>2222</p>
+				<p>33333</p>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+//		var ali = document.querySelectorAll("li");
+//		var ap = document.querySelectorAll("p");
+//		
+//		function fn(){
+//			for(var i=0;i<ali.length;i++){
+//				ali[i].index = i;
+//				ali[i].onclick = function(){
+//					myclick(this)
+//				}
+//			}
+//		}
+//		function myclick(that){
+//			for(var j=0;j<ali.length;j++){
+//				ali[j].className = "";
+//				ap[j].className = "";
+//			}
+//			that.className = "active";
+//			ap[that.index].className = "active";
+//		}
+//		fn();
+		
+		
+		
+//		1.封装函数，解除函数嵌套
+//		2.创建对象,准备把所有的变量和函数,写成对象的属性和方法
+//		3.调bug,this的指向,方法的调用,参数的传递
+		
+		function Tab(){
+			this.ali = document.querySelectorAll("li");
+			this.ap = document.querySelectorAll("p");
+		}
+		Tab.prototype.fn = function(){
+			var that = this;
+			for(var i=0;i<this.ali.length;i++){
+				this.ali[i].index = i;
+				this.ali[i].onclick = function(){
+					that.myclick(this)
+				}
+			}
+		}
+		Tab.prototype.myclick = function(that){
+			for(var j=0;j<this.ali.length;j++){
+				this.ali[j].className = "";
+				this.ap[j].className = "";
+			}
+			
+			that.className = "active";
+			this.ap[that.index].className = "active";
+		}
+		var tab = new Tab();
+		tab.fn()
+		
+	</script>
+</html>

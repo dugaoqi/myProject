@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.cont{width: 1130px;height: 300px;margin: 50px auto;position: relative;}
+			#imgbox{position: absolute;left: 0px;top: 0;}
+			#imgbox a{float: left;}
+			#imgbox a img{width: 1130px;height: 300px;display: block;}
+			
+			input{position: absolute;top: 125px;width: 50px;height: 50px;border: none;background: rgba(255,255,255,.6);z-index: 999999999;font-size: 30px;color: #222;}
+			input:nth-child(2){left: 0;}
+			input:nth-child(3){left: 500px;}
+		</style>
+	</head>
+	<body>
+		<div class="cont">
+			<div id="imgbox">
+				<a href=""><img src="https://img.zcool.cn/community/019cea5b4d53cea8012036be4f3813.png@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/019fb95b4d5627a8012036bebdebd1.jpg@1380w"/></a>
+				<a href=""><img src="https://img.zcool.cn/community/01f9d85b4d53b8a8012036beaf6074.png@1380w"></a>
+				<a href=""><img src="https://img.zcool.cn/community/019cea5b4d53cea8012036be4f3813.png@1380w"/></a>
+			</div>
+			<input type="button" name="" id="prev" value="<<" />
+			<input type="button" name="" id="next" value=">>" />
+		</div>
+	</body>
+	<script src="move.3.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var oimgbox = document.getElementById("imgbox")
+		var aimg = oimgbox.children;
+		oimgbox.style.width = aimg.length * aimg[0].offsetWidth + "px";
+		
+		var onext = document.getElementById("next")
+		
+		var index = 0;
+		
+		onext.onclick = function(){
+			if(index == aimg.length-1){
+				index = 1;
+				oimgbox.style.left = 0
+			}else{
+				index++;
+			}
+			
+//			console.log(index)
+			
+			move(oimgbox,{left:-aimg[0].offsetWidth * index})
+		}
+		
+	</script>
+</html>

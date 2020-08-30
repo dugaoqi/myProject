@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		bind方法的语法
+//		function fn(){
+//			
+//		}
+//		fn.bind()()
+		
+//		改变执行上下文,案例1
+//		var obj = {
+//			name:"admin"
+//		}
+//		
+//		function show(){
+//			console.log(this)
+//		}
+//		show()
+//		
+//		show.bind(obj)()
+
+//		改变执行上下文,案例2，吹风机
+//		var A = {
+//			name:"小A正在用吹风机",
+//			吹风机:function(){
+//				console.log(this.name)
+//			}
+//		}
+//		
+//		var C = {
+//			name:"小C正在用吹风机"
+//		}
+//		
+//		A.吹风机()
+//		
+//		A.吹风机.bind(C)()
+		
+//		var obj = {
+//			name:"admin",
+//			show:function(){
+//				setTimeout(function(){
+//					console.log(this)
+//				},1000)
+//			}
+//		}
+//		obj.show()
+
+		
+//		function fn(a){
+//			console.log(this)
+//			a()
+//		}
+//		fn(function(){
+//			console.log(this)
+//		})
+
+//		var obj = {
+//			fn:function(a){
+//				console.log(this)
+//				a()
+//			}
+//		}
+//		obj.fn(function(){
+//			console.log(this)
+//		})
+//		
+//		setTimeout(function(){
+//			console.log(this)
+//		},1000)
+		
+		
+//		在一些情况下,this的指向有可能会发生改变
+//			1.回调函数中的this指向window
+			
+//		var obj = {
+//			name:"admin",
+//			show:function(){
+//				setTimeout(function(){
+//					console.log(this)
+//				}.bind(this),1000)
+//			}
+//		}
+//		obj.show()
+		
+		document.onclick = function(){
+			
+			fn.bind(document,"world")("hello")
+			
+		}
+		
+		function fn(a,b){
+			console.log(a)
+			console.log(b)
+			console.log(this)
+//			console.log(arguments)
+		}
+		
+		// bind()是函数的方法,bind方法会返回一个新函数,这个新函数,是改变之后的原函数
+		// 		bind的第一个参数,是用来改变原函数的this指向
+		// 		第二个参数往后,都作为参数传进原函数,加上原函数原本的参数,一起被新函数调用
+		// 		第一参数必填,后面是可选
+		
+	</script>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			.box{
+			margin:20px auto;
+		}	
+		</style>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		地图:给个范围,设置宽高
+//		食物:随机,被吃
+//		蛇:蛇节,根据键盘控制运动,吃
+		
+		function Map(w,h,c){
+			this.width = w;
+			this.height = h;
+			this.color = c;
+			
+			this.create()
+		}
+		Map.prototype.create = function(){
+			this.m = document.createElement("div")
+			this.m.style.width = this.width + "px";
+			this.m.style.height = this.height + "px";
+			this.m.style.background = this.color;
+			this.m.style.position = "relative";
+			this.m.className="box";
+			document.body.appendChild(this.m)
+		}
+		
+		function Food(w,h,c){
+			this.width = w;
+			this.height = h;
+			this.color = c;
+			this.x = 0
+			this.y = 0
+			
+			this.create()
+		}
+		Food.prototype.create = function(){
+			if(!this.f){
+				this.f = document.createElement("div");
+				this.f.style.width = this.width + "px";
+				this.f.style.height = this.height + "px";
+				this.f.style.background = this.color;
+				this.f.style.position = "absolute";
+				map.m.appendChild(this.f);
+			}
+			
+			this.x = this.random(0,39);
+			this.y = this.random(0,19);
+			
+			this.f.style.left = this.x * this.width + "px";
+			this.f.style.top = this.y * this.height + "px";
+		}
+		Food.prototype.random = function(a,b){
+			return Math.round(Math.random()*(a-b)+b)
+		}
+		
+		
+		function Snake(w,h){
+			this.width = w;
+			this.height = h;
+			this.body = [[4,3,"yellow"],[3,3,"pink"],[2,3,"blue"]];
+			this.direct = "right";
+			
+			this.create()
+		}
+		Snake.prototype.create = function(){
+			for(var i=0;i<this.body.length;i++){
+				if(!this.body[i][3]){
+					this.body[i][3] = document.createElement("div");
+					this.body[i][3].style.width = this.width + "px";
+					this.body[i][3].style.height = this.height + "px";
+					this.body[i][3].style.background = this.body[i][2];
+					this.body[i][3].style.position = "absolute";
+					map.m.appendChild(this.body[i][3]);
+				}
+				
+				this.body[i][3].style.left = this.body[i][0] * this.width + "px"
+				this.body[i][3].style.top = this.body[i][1] * this.height + "px"
+			}
+			this.body[0][3].innerHTML = 0;
+			setTimeout(()=>{
+				this.move()
+			},300)
+		}
+		Snake.prototype.move = function(){
+			for(var i=this.body.length-1;i>0;i--){
+				this.body[i][0] = this.body[i-1][0]
+				this.body[i][1] = this.body[i-1][1]
+			}
+			switch(this.direct){
+				case "right":
+					this.body[0][0] += 1;break;
+				case "left":
+					this.body[0][0] -= 1;break;
+				case "top":
+					this.body[0][1] -= 1;break;
+				case "bottom":
+					this.body[0][1] += 1;break;
+			}
+			
+//			console.log(food.x,food.y)
+			if(this.body[0][0] == food.x && this.body[0][1] == food.y){
+				var x = this.body[this.body.length-1][0]
+				var y = this.body[this.body.length-1][1]
+				this.body.push([x,y,"green"])
+				food.create()
+			}
+			
+			if(this.body[0][0] < 0 || this.body[0][1] < 0 || this.body[0][0] > 39 || this.body[0][1] > 19){
+				alert("撞墙死")
+				return null;
+			}
+			
+			for(var i=1;i<this.body.length;i++){
+				if(this.body[0][0] == this.body[i][0] && this.body[0][1] == this.body[i][1]){
+					alert("撞自己死")
+					return null;
+				}
+			}
+			
+			this.create()
+		}
+		Snake.prototype.direction = function(value){
+			switch (value){
+				case 37:
+					this.direct = "left"
+					break;
+				case 38:
+					this.direct = "top"
+					break;
+				case 39:
+					this.direct = "right"
+					break;
+				case 40:
+					this.direct = "bottom"
+					break;
+			}
+		}
+		
+		
+		var map = new Map(1000,600,"#eee");
+		
+		var food = new Food(20,20,"red");
+//		setInterval(function(){
+//			food.create()
+//		},500)
+		
+		var snake = new Snake(20,20,);
+		
+		document.onkeydown = function(eve){
+			var e = eve || window.event;
+			var code = e.keyCode || e.srcElement;
+			
+			snake.direction(code)
+			
+		}
+		
+	</script>
+</html>

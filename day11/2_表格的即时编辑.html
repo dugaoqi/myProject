@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<table border="1" cellspacing="0" align="center" width="700" id="tab">
+			<tr>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>成绩</th>
+				<th>备注</th>
+			</tr>
+			<tr>
+				<td>Data</td>
+				<td>Data</td>
+				<td>Data</td>
+				<td>Data</td>
+			</tr>
+			<tr>
+				<td>Data</td>
+				<td>Data</td>
+				<td>Data</td>
+				<td>Data</td>
+			</tr>
+			<tr>
+				<td>Data</td>
+				<td>Data</td>
+				<td>Data</td>
+				<td>Data</td>
+			</tr>
+			<tr>
+				<td>Data</td>
+				<td>Data</td>
+				<td>Data</td>
+				<td>Data</td>
+			</tr>
+		</table>
+	</body>
+	<script type="text/javascript">
+//		事件委托
+//		var otab = document.getElementById("tab");
+//		otab.addEventListener("click",function(eve){
+//			var e = eve || window.event;
+//			var target = e.target || e.srcElement;
+//			
+//			if(target.nodeName == "TD"){
+//				var ipt = document.createElement("input");
+//				ipt.value = target.innerHTML;
+//				target.innerHTML = "";
+//				target.appendChild(ipt)
+//				
+//				ipt.focus()
+//				
+//				ipt.onblur = function(){
+//					target.innerHTML = ipt.value;
+//				}
+//			}
+//		})
+		
+		
+//		直接绑定(注意事件的冒泡)
+		var atd = document.querySelectorAll("td")
+		for(var i=0;i<atd.length;i++){
+			atd[i].onclick = function(){
+				var ipt = document.createElement("input");
+				ipt.value = this.innerHTML;
+				this.innerHTML = "";
+				this.appendChild(ipt);
+				
+				ipt.focus()
+				
+				ipt.onclick = function(eve){
+					var e = eve || window.event;
+					e.stopPropagation()
+				}
+				
+			}
+		}
+		
+	</script>
+</html>

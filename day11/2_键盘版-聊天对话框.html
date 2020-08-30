@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			.box{width: 300px;height: 400px;border: solid 1px black;margin: 30px auto;}
+			#cont{height: 339px;border-bottom: solid 1px black;overflow: auto;}
+			#txt{height: 60px;}
+			#msg{width: 260px;height: 60px;border: none;background: none;float: left;resize: none;outline: none;padding: 6px;box-sizing: border-box;}
+			#send{width: 40px;height: 60px;border: none;border-left: solid 1px black;background: #ccc;float: left;}
+			
+			#cont span{max-width: 260px;padding: 6px;margin: 6px;border-radius: 6px;clear: both;}
+			#cont span:nth-child(2n-1){float: left;background: dodgerblue;}
+			#cont span:nth-child(2n){float: right;background: limegreen;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div id="cont"></div>
+			<div id="txt">
+				<textarea id="msg"></textarea>
+				<input type="button" name="" id="send" value="发送" />
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var osend = document.getElementById("send")
+		var omsg = document.getElementById("msg")
+		var ocont = document.getElementById("cont")
+		
+//		var adiv = document.querySelectorAll("#cont div");		静态获取，当前这一刻，就决定了将来的状态
+//		var adiv = document.getElementsByTagName("span");	//动态获取,会动态检测,将来如果添加了,会自动获取(得在将来查看)
+		
+		osend.onclick = function(){
+			send()
+		}
+		
+		
+		omsg.onkeydown = function(eve){
+			var e = eve || window.event;
+			var code = e.keyCode || e.which;
+			if(code == 13 && e.ctrlKey){
+				send()
+			}
+//			console.log(code)
+//			console.log(e.ctrlKey)
+		}
+		
+		
+		function send(){
+			if(omsg.value != ""){
+			
+				var div = document.createElement("span");
+				div.innerHTML = omsg.value;
+				ocont.appendChild(div);
+				
+				var adiv = document.getElementsByTagName("span");
+				var sumHeight = 0;
+				for(var i=0;i<adiv.length;i++){
+					sumHeight += adiv[i].offsetHeight + 12
+				}
+				
+				ocont.scrollTop = sumHeight;
+				
+				omsg.value = "";
+				
+				omsg.blur()
+				
+			}else{
+				alert("不允许发送空消息")
+			}
+		}
+		
+	</script>
+</html>

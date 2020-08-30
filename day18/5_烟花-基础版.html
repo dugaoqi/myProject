@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#container{
+				width: 80%;
+				height: 600px;
+				border: 2px solid red;
+				background: #000;
+				margin:20px auto;
+				cursor: pointer;
+				position: relative;
+				left: 0;
+				top: 0;
+				overflow: hidden;
+			}
+			.fire{
+				width: 10px;
+				height:10px;
+				position: absolute;
+				bottom: 0;
+			}
+			.small-fire{
+				width: 10px;
+				height:10px;
+				position: absolute;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+	<script src="../move.3.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		OOA
+//			点击创建烟花
+//			烟花的初始位置
+//			烟花出现之后,立即运动
+//			运动到终点,消失
+//			创建小烟花
+//			立即开始运动
+//			到终点之后,消失
+			
+//		OOD
+//			function Fire(){
+////				存属性
+//			}
+//			Fire.prototype.createFire = function(){
+////				创建烟花
+//				this.move()
+//			}
+//			Fire.prototype.move = function(){
+////				烟花开始运动
+//				this.fireDie()
+//			}
+//			Fire.prototype.fireDie = function(){
+////				烟花消失
+//				this.createSmallFire()
+//			}
+//			Fire.prototype.createSmallFire = function(){
+////				创建小烟花
+//				this.smallMove()
+//			}
+//			Fire.prototype.smallMove = function(){
+////				小烟花运动
+//				this.smallDie()
+//			}
+//			Fire.prototype.smallDie = function(){
+////				小烟花消失
+//			}
+//			document.onclick = function(){
+//				new Fire()
+//			}
+
+//		OOP
+			function Fire(ele,x,y){
+//				存属性
+				this.cont = ele;
+				this.x = x;
+				this.y = y;
+				
+				this.createFire()
+			}
+			Fire.prototype.createFire = function(){
+//				创建烟花
+				this.fire = document.createElement("div")
+				this.fire.className = "fire";
+				this.fire.style.background = this.randomColor();
+				this.fire.style.left = this.x + "px";
+				this.cont.appendChild(this.fire)
+				
+				this.move()
+			}
+			Fire.prototype.move = function(){
+				var that = this;
+//				烟花开始运动
+				move(this.fire,{top:this.y},function(){
+					that.fire.remove()
+					that.createSmallFire()
+				})
+			}
+			Fire.prototype.createSmallFire = function(){
+				var that = this;
+//				创建小烟花
+				var num = this.random(10,20);
+				console.log(num)
+				
+				for(var i=0;i<num;i++){
+					var div = document.createElement("div");
+					(function(ele){
+						div.className = "small-fire";
+						div.style.background = that.randomColor();
+						div.setAttribute("index",i);
+						div.style.left = that.x + "px"
+						div.style.top = that.y + "px"
+						that.cont.appendChild(div);
+						
+						var target = {
+							x:that.random(0,that.cont.offsetWidth-20),
+							y:that.random(0,that.cont.offsetHeight-20)
+						}
+						
+						move(div,{left:target.x,top:target.y},function(){
+							ele.remove()
+						})
+					})(div)
+				}
+//				this.smallMove()
+			}
+//			Fire.prototype.smallMove = function(){
+////				小烟花运动
+//				this.smallDie()
+//			}
+//			Fire.prototype.smallDie = function(){
+////				小烟花消失
+//			}
+			
+			Fire.prototype.randomColor = function(){
+				return `rgb(${this.random(0,255)},${this.random(0,255)},${this.random(0,255)})`
+			}
+			Fire.prototype.random = function(a,b){
+				return Math.round(Math.random()*(a-b)+b);
+			}
+			
+			
+			var ocont = document.getElementById("container")
+			ocont.onclick = function(eve){
+				var e = eve || window.event;
+				
+				new Fire(this,e.offsetX,e.offsetY)
+			}
+	</script>
+</html>

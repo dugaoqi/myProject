@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			span{cursor: pointer;}
+		</style>
+	</head>
+	<body>
+		<input type="text" name="" id="userId" value="" />
+		<input type="text" name="" id="userName" value="" />
+		<input type="button" name="" id="btn" value="添加" />
+		<table border="1" cellspacing="0" width="600" align="center" id="tab">
+			<tr>
+				<td>学号</td>
+				<td>姓名</td>
+				<td>操作</td>
+			</tr>
+			<!--<tr>
+				<td>001</td>
+				<td>姓名</td>
+				<td><span>删除</span></td>
+			</tr>-->
+		</table>
+	</body>
+	<script type="text/javascript">
+		var ouserId = document.getElementById("userId");
+		var ouserName = document.getElementById("userName");
+		var obtn = document.getElementById("btn");
+		var otab = document.getElementById("tab");
+		
+		var aspan = document.getElementsByTagName("span");
+		
+		
+		obtn.onclick = function(){
+//			ouserId.value;
+//			ouserName.value;
+			var td1 = document.createElement("td")
+			td1.innerHTML = ouserId.value;
+			var td2 = document.createElement("td")
+			td2.innerHTML = ouserName.value;
+			var span = document.createElement("span")
+			span.innerHTML = "删除";
+			var td3 = document.createElement("td")
+			td3.appendChild(span);
+			var tr = document.createElement("tr")
+			tr.appendChild(td1)
+			tr.appendChild(td2)
+			tr.appendChild(td3)
+			otab.appendChild(tr)
+			
+			ouserId.value = "";
+			ouserName.value = "";
+			
+			for(var i=0;i<aspan.length;i++){
+				aspan[i].onclick = function(){
+					this.parentNode.parentNode.remove()
+				}
+			}
+			
+		}
+		
+		
+	</script>
+</html>

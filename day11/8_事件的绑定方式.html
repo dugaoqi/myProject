@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">1221321</div>
+	</body>
+	<script type="text/javascript">
+		var obox = document.getElementById("box")
+		
+//		obox.onclick = function(){
+//			console.log(1)
+//		}
+//		obox.onclick = function(){
+//			console.log(2)
+//		}
+//		obox.onclick = null
+		
+//		on绑定
+//		DOM0级事件绑定
+		
+//		DOM2级事件绑定
+//		事件监听方式绑定事件
+		
+//		句柄：函数名
+//		obox.addEventListener("click",fn1)
+//		function fn1(){
+//			console.log(1111)
+//		}
+//		obox.addEventListener("click",function(){
+//			console.log(2222)
+//		})
+//		obox.removeEventListener("click",fn1)
+
+
+
+//		obox.attachEvent("onclick",fn1)
+//		function fn1(){
+//			console.log(1)
+//		}
+//		obox.attachEvent("onclick",function(){
+//			console.log(2)
+//		})
+//		obox.detachEvent("onclick",fn1)
+		
+		function addEvent(ele,myEvent,fn){
+			if(ele.addEventListener){
+				ele.addEventListener(myEvent,fn,false)
+			}else if(ele.attachEvent){
+				ele.attachEvent("on"+myEvent,fn)
+			}else{
+				ele["on"+myEvent] = fn
+			}
+		}
+		function removeEvent(ele,myEvent,fn){
+			if(ele.removeEventListener){
+				ele.removeEventListener(myEvent,fn)
+			}else if(ele.detachEvent){
+				ele.detachEvent("on"+myEvent,fn)
+			}else{
+				ele["on"+myEvent] = null
+			}
+		}
+		
+		var myEve = {
+			add:function(ele,myEvent,fn){
+				if(ele.addEventListener){
+					ele.addEventListener(myEvent,fn,false)
+				}else if(ele.attachEvent){
+					ele.attachEvent("on"+myEvent,fn)
+				}else{
+					ele["on"+myEvent] = fn
+				}
+			},
+			remove:function(ele,myEvent,fn){
+				if(ele.removeEventListener){
+					ele.removeEventListener(myEvent,fn)
+				}else if(ele.detachEvent){
+					ele.detachEvent("on"+myEvent,fn)
+				}else{
+					ele["on"+myEvent] = null
+				}
+			}
+		}
+		
+		addEvent(document,"click",fn1)
+		function fn1(){
+			console.log("hello")
+		}
+		addEvent(document,"click",fn2)
+		function fn2(){
+			console.log("world")
+		}
+		
+		removeEvent(document,"click",fn2)
+		
+//		var abc = "click";
+//		obox["on"+abc] = fn;
+//		
+//		function fn(){
+//			console.log(1)
+//		}
+
+		
+//		var obj = {
+//			name:"admin",
+//			show:function(str){
+//				console.log(this.name)
+//				console.log(str)
+//			}
+//		}
+//		obj.show("hahaha")
+		
+	</script>
+</html>

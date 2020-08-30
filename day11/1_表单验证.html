@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" name="" id="user" value="" /><span></span><br />
+		密码：<input type="text" name="" id="pass" value="" /><span></span><br />
+		重复密码：<input type="text" name="" id="pass2" value="" /><span></span><br />
+		<input type="button" name="btn" id="btn" value="提交" />
+	</body>
+	<script type="text/javascript">
+//		1.用户名           用户名仅支持中文、字母、数字、“-”“_”的组合，4-20个字符
+//		2.密码的规则        数字字母特殊字符，一种类型，弱。两种类型为中，三种类型为强,6-20个字符
+//		3.重复密码            跟第一次输入 密码一致
+//		4.手机号的验证      第一位必须为1，后面再加10位数字
+//		5.邮箱                数字大小写字母_- 3到12位   @  数字字母 2到9位  . 字母2到5位
+//		6.提交按钮的时候，判断所有输入数据是否符合。符合跳转，否，不跳
+		
+		var ouser = document.getElementById("user");
+		var opass = document.getElementById("pass");
+		var opass2 = document.getElementById("pass2");
+		var obtn = document.getElementById("btn");
+//		每个输入框的状态:成功/失败，初始为失败
+		var x = false;
+		var y = false;
+		var z = false;
+		
+		ouser.onblur = function(){
+			//用户名的正则
+			var reg = /^[\w\-\u2E80-\u9FFF]{4,20}$/
+			if(reg.test(this.value)){
+				this.nextElementSibling.innerHTML = "可以使用";
+				x = true
+			}else{
+				this.nextElementSibling.innerHTML = "不符合规则，请输入中文、字母、数字、“-”“_”的组合，4-20个字符";
+				x = false
+			}
+		}
+		
+		opass.onblur = function(){
+			if(this.value != opass2.value && opass2.value != ""){
+				opass2.nextElementSibling.innerHTML = "两次不一致";
+				z = false
+			}
+			
+			if(this.value.length>=6 && this.value.length<=20){
+//				三种情况的开关的定义，出现了一种就对应的改成1
+				var a = 0;
+				var b = 0;
+				var c = 0;
+				//是否出现数字的正则
+				var numReg = /\d+/g;
+//				if(numReg.test(this.value)){
+//					a = 1
+//				}else{
+//					a = 0;
+//				}
+				a = numReg.test(this.value) ? 1 : 0;
+				
+				//是否出现字母的正则
+				var azReg = /[a-zA-Z]+/g;
+//				if(azReg.test(this.value)){
+//					b = 1
+//				}else{
+//					b = 0;
+//				}
+				b = azReg.test(this.value) ? 1 : 0;
+				
+				//是否出现特殊的正则
+				var tsReg = /[^a-zA-Z0-9]+/g;
+//				if(tsReg.test(this.value)){
+//					c = 1
+//				}else{
+//					c = 0;
+//				}
+				c = tsReg.test(this.value) ? 1 : 0;
+				
+//				三种情况都判断之后,验证开关的结果
+				var str = ""
+				switch(a+b+c){
+					case 1:
+						str = "简单";break;
+					case 2:
+						str = "一般";break;
+					case 3:
+						str = "困难";break;
+				}
+				this.nextElementSibling.innerHTML = str;
+				y = true;
+			}else{
+				this.nextElementSibling.innerHTML = "长度不符合";
+				y = false
+			}
+		}
+		
+		opass2.onblur = function(){
+			if(this.value == opass.value){
+				this.nextElementSibling.innerHTML = "一致";
+				z = true
+			}else{
+				this.nextElementSibling.innerHTML = "两次不一致";
+				z = false
+			}
+		}
+		
+//		判断所有输入框的状态
+		obtn.onclick = function(){
+			if(x&&y&&z){
+				alert("提交成功")
+			}else{
+				alert("提交失败")
+			}
+		}
+	</script>
+</html>

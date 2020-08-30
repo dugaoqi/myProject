@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#xy{position: fixed;left: 0;bottom: 0;}
+			.box{border-radius: 50%;position: absolute;}
+			input{position: absolute;z-index: 999999999999;}
+			input:nth-child(1){}
+			input:nth-child(2){left: 50px;}
+			input:nth-child(3){left: 100px;}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn1" value="+" />
+		<input type="button" name="" id="btn2" value="-" />
+		<input type="button" name="" id="red" value="red" />
+		<span id="xy"></span>
+	</body>
+	<script type="text/javascript">
+		var oxy = document.getElementById("xy")
+		
+		var obtn1 = document.getElementById("btn1")
+		var obtn2 = document.getElementById("btn2")
+		var ored = document.getElementById("red")
+		
+		var w = 10;
+		var h = 10;
+		var c = "black";
+		
+		document.onmousemove = function(eve){
+			var e = eve || window.event;
+			oxy.innerHTML = e.pageX + "," + e.pageY;
+			
+			var div = document.createElement("div");
+			document.body.appendChild(div)
+			div.className = "box";
+			div.style.left = e.pageX + "px";
+			div.style.top = e.pageY + "px";
+			div.style.width = w + "px";
+			div.style.height = h + "px";
+			div.style.background = c;
+		}
+		obtn1.onclick = function(){
+			w += 5
+			h += 5
+		}
+		obtn2.onclick = function(){
+			if(w <= 5){
+				w = h = 5
+			}else{
+				w -= 5
+				h -= 5
+			}
+		}
+		ored.onclick = function(){
+			c = "red"
+		}
+		
+	</script>
+</html>

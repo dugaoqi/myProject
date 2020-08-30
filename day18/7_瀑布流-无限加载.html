@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#cont{margin: 0 auto;position: relative;}
+			.box{float: left;padding: 6px;}
+			.imgbox{border: solid 1px black;border-radius: 6px;padding: 6px;}
+			#cont img{width: 200px;display: block;}
+		</style>
+		<script type="text/javascript">
+//			var json = [{
+//				scr:"images/1.jpg"
+//			},{
+//				scr:"images/2.jpg"
+//			},{
+//				scr:"images/3.jpg"
+//			},{
+//				scr:"images/4.jpg"
+//			},{
+//				scr:"images/5.jpg"
+//			},{
+//				scr:"images/6.jpg"
+//			},{
+//				scr:"images/7.jpg"
+//			},{
+//				scr:"images/8.jpg"
+//			},{
+//				scr:"images/9.jpg"
+//			},{
+//				scr:"images/10.jpg"
+//			},]
+			
+			var data = ["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg","images/6.jpg","images/7.jpg","images/8.jpg","images/9.jpg","images/10.jpg",]
+			
+			onload = function(){
+				load()
+			}
+			onscroll = function(){
+				var ocont = document.getElementById("cont")
+				if(isBottom()){
+					var str = ""
+					for(var i=0;i<data.length;i++){
+//						var img = document.createElement("img")
+//						img.src = data[i];
+//						var imgbox = document.createElement("div")
+//						imgbox.className = "imgbox";
+//						imgbox.appendChild(img)
+//						var box = document.createElement("div")
+//						box.className = "box";
+//						box.appendChild(imgbox)
+//						ocont.appendChild(box)
+						
+						str += `<div class="box">
+									<div class="imgbox">
+										<img src="${data[i]}"/>
+									</div>
+								</div>`;
+					}
+					ocont.innerHTML += str;
+					load()
+				}
+			}
+			
+			function isBottom(){
+//				高度
+				var clientH = document.documentElement.clientHeight;
+//				滚动的距离
+				var scrollT = document.documentElement.scrollTop;
+//				当前页面中的最后一个元素有关
+				var ocont = document.getElementById("cont")
+				var abox = ocont.children;
+				var lastT = abox[abox.length-1].offsetTop
+//				当页面的高度+滚动的距离 > 最后一个元素的top,意味着到底了
+				if(clientH + scrollT > lastT){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			
+			
+			//load函数用来渲染页面
+			function load(){
+				var ocont = document.getElementById("cont")
+				var abox = ocont.children;
+				var clientW = document.documentElement.clientWidth;
+//				计算一行最大能放下几个图片，用于计算父级的宽度，用来居中
+				var maxNum = Math.floor(clientW/abox[0].offsetWidth);
+				ocont.style.width = maxNum * abox[0].offsetWidth + "px";
+//				区分出第一行和后面的行，统计第一行的高度
+				var heightArr = [];
+				for(var i=0;i<maxNum;i++){
+					heightArr.push(abox[i].offsetHeight)
+				}
+				for(var i=maxNum;i<abox.length;i++){
+//					console.log(Math.min.apply(null,heightArr))
+//					每次执行for都会重新获取到后面行的最小值和最小值所在的索引
+					var min = getMin(heightArr);
+					var minIndex = heightArr.indexOf(min);
+//					将最小值和索引代表的位置,设置给当前元素
+					abox[i].style.position = "absolute";
+					abox[i].style.top = min + "px";
+					abox[i].style.left = minIndex * abox[0].offsetWidth + "px";
+					
+//					修改原数组中的最小值,最小值加上当前放在下面的元素的高度
+					heightArr[minIndex] = heightArr[minIndex] + abox[i].offsetHeight;
+				}
+			}
+			
+			//用来获取数组的最小值
+			function getMin(arr){
+				var myarr = [];
+				
+				for(var i=0;i<arr.length;i++){
+					myarr.push(arr[i])
+				}
+				
+				for(var i=0;i<myarr.length-1;i++){
+					for(var j=0;j<myarr.length-1-i;j++){
+						if(arr[j] > myarr[j+1]){
+							var ls = myarr[j]
+							myarr[j] = myarr[j+1]
+							myarr[j+1] = ls;
+						}
+					}
+				}
+				return myarr[0]
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="cont">
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/5.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/5.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/5.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/5.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/5.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/5.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="imgbox">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

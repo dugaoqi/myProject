@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{width: 100px;height: 100px;background: red;}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" class="btn1" value="隐藏" />
+		<input type="button" name="" class="btn2" value="显示" />
+		<input type="button" name="" class="btn3" value="隐藏/显示" />
+		<input type="button" name="" class="btn4" value="上拉" />
+		<input type="button" name="" class="btn5" value="下拉" />
+		<input type="button" name="" class="btn6" value="上拉/下拉" />
+		<input type="button" name="" class="btn7" value="渐隐" />
+		<input type="button" name="" class="btn8" value="渐显" />
+		<input type="button" name="" class="btn9" value="渐隐/渐显" />
+		<input type="button" name="" class="btn10" value="半透明" />
+		
+		<div class="box"></div>
+	</body>
+	<script src="libs/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		$(".btn1").click(function(){
+			$(".box").hide(3000,function(){
+				console.log("1")
+			})
+		})
+		$(".btn2").click(function(){
+			$(".box").show(3000)
+		})
+		$(".btn3").click(function(){
+			$(".box").toggle(3000)
+		})
+		
+		$(".btn4").click(function(){
+			$(".box").slideUp(1000)
+		})
+		$(".btn5").click(function(){
+			$(".box").slideDown(1000)
+		})
+		$(".btn6").click(function(){
+			$(".box").slideToggle(1000)
+		})
+		
+		$(".btn7").click(function(){
+			$(".box").fadeOut(1000)
+		})
+		$(".btn8").click(function(){
+			$(".box").fadeIn(1000)
+		})
+		$(".btn9").click(function(){
+			$(".box").fadeToggle(1000)
+		})
+		$(".btn10").click(function(){
+			$(".box").fadeTo(400,0.2)
+		})
+		
+	</script>
+</html>

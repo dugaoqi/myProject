@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		对象
+//		把一些对象组合到一起
+//		按照一定的组织结构
+//		树形结构
+//		操作父对象,所有子对象,跟随操作
+		
+		function ImagesStore( id ){
+		    this.children = [];
+		    this.element = document.createElement("div");
+		    this.element.id = id;
+		    this.element.className = "imgs-store";
+		    document.body.appendChild(this.element)
+		}
+		ImagesStore.prototype = {
+		    constructor : ImagesStore,
+		    add:function( child ){
+		        this.children.push( child );
+		        this.element.appendChild( child.getElement() );
+		    },
+		    remove:function( child ){
+		        for( var node, i=0; node = this.getChild(i); i++ ){
+		            if( node === child ){
+		                this.children.splice( i, 1 );
+		                break;
+		            }
+		        }
+		        this.element.removeChild( child.getElement() );
+		    },
+		    getChild:function( i ){
+		        return this.children[i];
+		    },
+		    show:function(){
+		        this.element.style.display = '';
+		        for( var node, i=0; node = this.getChild(i); i++ ){
+		            node.show();
+		        }
+		    },
+		    hide:function(){
+		        for( var node, i=0; node = this.getChild(i); i++ ){
+		            node.hide();
+		        }
+		        this.element.style.display = 'none';
+		    },
+		    getElement:function(){
+		        return this.element;
+		    }
+		}
+	    //上面的组合对象中我们可以看出，原型上的hide和show方法不单单是对于当前element进行处理，还延伸到其包含的每一个叶对象上执行。这边就体现了组合模式的运行机制，一条命令在多个对象上激发复杂的或者递归的行为。
+	
+	
+		function ImageItem( src ){
+		    this.element = document.createElement("img");
+		    this.element.src = src;
+		    this.element.className = "img-item";
+		}
+		ImageItem.prototype = {
+		    constructor:ImageItem,
+		    add:function( child ){
+		        console.log("this is image object, no add function");
+		    },
+		    remove:function( child ){
+		        console.log("this is image object, no remove function");
+		    },
+		    getChild:function( i ){
+		        console.log("this is image object, no getChild function");
+		    },
+		    show:function(){
+		        this.element.style.display = '';
+		    },
+		    hide:function(){
+		        this.element.style.display = 'none';
+		    },
+		    getElement:function(){
+		        return this.element;
+		    }
+		}
+		
+		var img1 = new ImageItem("https://www.baidu.com/img/bd_logo1.png")
+		var img2 = new ImageItem("https://t10.baidu.com/it/u=2331113424,3878807179&fm=173&app=25&f=JPG?w=218&h=146&s=359E6C321B595CC848F515CA000050B0")
+		var box = new ImagesStore("box")
+		
+		box.add(img1)
+		box.add(img2)
+		
+//		box.remove(img1)
+
+		box.hide()
+		
+		console.log(img1)
+		console.log(box)
+		
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		function ajaxGet(url,callback){
+			if(XMLHttpRequest){
+				var ajax = new XMLHttpRequest()
+			}else{
+				var ajax = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			ajax.open("GET",url,true)
+			ajax.onreadystatechange = function(){
+				if(ajax.readyState == 4 && ajax.status == 200){
+					callback(ajax.responseText)
+				}
+			}
+			ajax.send(null)
+		}
+		
+		document.onclick = function(){
+			
+			var d = new Date();
+			
+			ajaxGet("http://localhost/1805/ajax/data/test.txt?a="+d.getTime(),function(res){
+//				res = JSON.parse(res)
+				console.log(res)
+			})
+		
+		}
+		
+		
+	</script>
+</html>

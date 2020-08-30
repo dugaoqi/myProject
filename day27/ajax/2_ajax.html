@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+//		ajax为什么要学习?
+			
+//			ajax的重要性:数据交互
+			
+//			js行为交互,表单验证
+//			ajax:不是单一的某个技术,一些技术的组合
+//			a:异步
+//			j:javascript
+//			a:and
+//			x:XML(服务器的数据)
+			
+//			
+//			优点:
+//				无刷新加载数据
+//				
+//			缺点:
+//				破坏浏览器的前进后退功能
+//			
+
+//			打电话：要面试题
+//			手机号
+//			1.有手机
+				
+//			2.拨号
+//				
+//			3.等待,状态
+//			
+//			4.歪!
+			document.write(Math.random())
+
+			
+			document.onclick = function(){
+	//			请求数据
+	//			请求地址
+	//			1.创建ajax对象
+					var ajax = new XMLHttpRequest();
+	//			2.拨号
+					ajax.open("GET","http://localhost/1805/ajax/data/test.txt");
+	//			3.检测状态
+					ajax.onreadystatechange = function(){
+						if(ajax.readyState == 4 && ajax.status == 200){
+							console.log(ajax.responseText)
+						}
+					}
+	//			4.歪!
+					ajax.send(null);
+			}
+			
+			
+	</script>
+</html>

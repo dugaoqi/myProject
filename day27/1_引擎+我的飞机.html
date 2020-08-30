@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dahuiji.css"/>
+	</head>
+	<body>
+		<div id="body_main" class="main">
+			<ul id="options" class="options">
+				<li value="1">超级困难</li>
+				<li value="2">非常困难</li>
+				<li value="3">比较困难</li>
+				<li value="4">就选我吧</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+//		飞机大战:
+//			引擎:绑定点击事件,选择难度,生成动画(背景,logo,loading),开始游戏
+//			我的飞机:创建,跟随鼠标移动,发出子弹,碰撞敌机,死亡
+//			子弹:跟随我的飞机创建,运动,顶部死亡,碰撞敌机死亡
+//			敌机:随机创建(位置,大小),运动,碰撞,死亡
+		function Engine(){
+			this.btn = document.getElementById("options").children;
+			this.main = document.getElementById("body_main");
+			this.hard = 1;
+			
+			this.init()
+		}
+		Engine.prototype.init = function(){
+			var that = this;
+			for(var i=0;i<this.btn.length;i++){
+				this.btn[i].onclick = function(){
+					that.hard = this.value;
+					this.parentNode.remove()
+					that.load()
+				}
+			}
+		}
+		Engine.prototype.load = function(){
+			var logo = createDiv("logo");
+			var loading = createDiv("loading");
+			
+			var bgSpeed = 2;
+			var bgInow = 0
+			var bgtime = setInterval(()=>{
+				this.main.style.backgroundPositionY = (bgInow += bgSpeed) + "px"
+			},30)
+			
+			var loadI = 1
+			var loadtime = setInterval(()=>{
+				loading.style.backgroundImage = "url(images/loading"+ ((loadI++)%3+1) +".png)"
+				console.log(1)
+			},500)
+			
+			setTimeout(()=>{
+				logo.remove()
+				loading.remove()
+				clearInterval(loadtime);
+				
+				this.gameStart()
+				
+			},200)
+		}
+		Engine.prototype.gameStart = function(){
+			plane.init(this.main)
+			plane.fire()
+		}
+		
+		var plane = {
+			init:function(main){
+				this.main = main;
+				this.ele = createDiv("my-warplain");
+				this.ele.style.left = (this.main.offsetWidth-this.ele.offsetWidth)/2 + "px"
+				this.ele.style.top = this.main.offsetHeight - this.ele.offsetHeight + "px"
+				
+				document.onmousemove = (eve)=>{
+					var e = eve || window.event
+					this.move(e)
+				}
+			},
+			move:function(e){
+				var l = e.clientX - this.main.offsetLeft - this.ele.offsetWidth/2;
+				var t = e.clientY - this.ele.offsetHeight/2;
+				
+				if(l<0) l=0;
+				if(t<0) t=0;
+				if(l > this.main.offsetWidth - this.ele.offsetWidth){
+					l = this.main.offsetWidth - this.ele.offsetWidth;
+				}
+				this.ele.style.left = l + "px"
+				this.ele.style.top = t + "px"
+			},
+			fire:function(){
+//				创建子弹
+				new Bullet(this.main)
+			}
+		}
+		
+		function Bullet(main){
+			this.main = main;
+			this.init();
+		}
+		Bullet.prototype = {
+			constructor:Bullet,
+			init:function(){
+				console.log(this.main);
+			}
+		}
+		
+		
+		
+		
+		function createDiv(myclass){
+			var div = document.createElement("div")
+			div.className = myclass;
+			document.getElementById("body_main").appendChild(div);
+			return div;
+		}
+		
+		new Engine()
+	</script>
+</html>

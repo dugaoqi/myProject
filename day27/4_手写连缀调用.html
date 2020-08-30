@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function Fn(){
+			this.name = "admin"
+		}
+		Fn.prototype.init = function(){
+			console.log("init")
+			return this;
+		}
+		Fn.prototype.move = function(){
+			console.log("move")
+			return this
+		}
+		Fn.prototype.display = function(){
+			console.log("display")
+			return this;
+		}
+		
+		new Fn().display().init().move()
+		
+	</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function Fn(){
+			this.name = "admin"
+			this.show()
+		}
+//		Fn.prototype.show = function(){
+//			console.log(this.name)
+//		}
+		
+		Fn.prototype = {
+			constructor:Fn,
+			show:function(){
+				console.log(this.name)
+			}
+		}
+		
+		console.log(Fn.prototype)
+		
+		var f = new Fn()
+		console.log(f)
+	</script>
+</html>

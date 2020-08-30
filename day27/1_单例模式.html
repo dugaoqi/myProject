@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.dialog{position: absolute;width: 200px;height: 80px;text-align: center;line-height: 80px;left: 0;right: 0;top: 0;bottom: 0;margin: auto;border: solid 1px black;border-radius: 6px;background: #000;color: #fff;}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="点击弹出框" />
+	</body>
+	<script type="text/javascript">
+//		设计模式:
+//		单例模式
+		
+//		function Fn(){
+//			if(!Fn.obj){
+//				Fn.obj = {};
+//			}
+//			Fn.obj.name = "admin"
+//			return Fn.obj;
+//		}
+//		var a = new Fn()
+//		var b = new Fn()
+//		var c = new Fn()
+//		var d = new Fn()
+//		var e = new Fn()
+//		console.log(a)
+//		console.log(b)
+//		console.log(a == b);		//true
+//		console.log(b == c);		//true
+//		console.log(c == d);		//true
+//		console.log(e == d);		//true
+//		console.log(a == d);		//true
+//		console.log(a.name);		//admin
+//		console.log(b.name);		//admin
+		
+		
+		var obtn = document.getElementById("btn")
+		
+		obtn.onclick = function(){
+			new Toast()
+		}
+		
+		function Toast(){
+			if(!Toast.obj){
+				Toast.obj = {}
+				Toast.obj.span = document.createElement("span")
+				Toast.obj.span.className = "dialog";
+				Toast.obj.span.innerHTML = "这是模态框";
+				document.body.appendChild(Toast.obj.span);
+			}else{
+				Toast.obj.span.style.display = "block";
+			}
+			
+			clearTimeout(Toast.obj.timer);
+			
+			Toast.obj.timer = setTimeout(function(){
+				Toast.obj.span.style.display = "none"
+			},1500)
+			
+			return Toast.obj;
+		}
+		
+	</script>
+</html>

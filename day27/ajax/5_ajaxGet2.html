@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="btn1" id="btn1" value="手机" />
+		
+	</body>
+	<script type="text/javascript">
+		var obtn1 = document.getElementById("btn1")
+		obtn1.onclick = function(){
+			ajaxGet("http://localhost/1805/ajax/data/data.php",function(res){
+				console.log(res)
+			})
+		}
+		
+//		ajaxGet(url,callback,data)
+		
+		function ajaxGet(url,callback,data){
+//			url+"?type=1"
+			if(data){
+				var str = "";
+				for(var i in data){
+					str = str + i+"="+data[i]+"&";
+				}
+				str = str.slice(0,str.length-1)
+				url = url + "?" + str;
+			}
+//			console.log(str)
+			
+			if(XMLHttpRequest){
+				var ajax = new XMLHttpRequest()
+			}else{
+				var ajax = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			ajax.open("GET",url,true)
+			ajax.onreadystatechange = function(){
+				if(ajax.readyState == 4 && ajax.status == 200){
+					callback(ajax.responseText)
+				}
+			}
+			ajax.send(null)
+		}
+	</script>
+</html>

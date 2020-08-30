@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.active{background: red;}
+		</style>
+	</head>
+	<body>
+		<input type="text" name="" id="txt" value="" />
+		<input type="button" name="" id="btn" value="选中" />
+		<ul id="list" class="active">
+			<li>html</li>
+			<li>ui</li>
+			<li>123</li>
+			<li>html+php</li>
+			<li>mysql</li>
+			<li></li>
+			<li>java</li>
+			<li>javascript+php</li>
+		</ul>
+		<div id="box">1</div>
+		<div id="box">2</div>
+		<div id="box">3</div>
+		<div class="cont">4</div>
+		<div class="cont">5</div>
+		<div class="cont">6</div>
+		<div class="msg">
+			<div class="xbox">
+				<span>a</span>
+				<span>b</span>
+				<span>c</span>
+			</div>
+			<span>q</span>
+			<span>w</span>
+			<span>e</span>
+		</div>
+		<ul class="list">
+			<li>link1</li>
+			<li>link2</li>
+			<li class="active">link3</li>
+			<li>link4</li>
+		</ul>
+		<span>7</span>
+		<span>8</span>
+		<span>9</span>
+		<h1 style="display: none;">一级标题</h1>
+		<h1 style="display: block;">以及标题</h1>
+	</body>
+	<script src="libs/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		console.dir($)
+//		console.dir(jQuery)
+		
+//		jQuery.????
+//		$.????
+
+//		jq的选择器
+		
+//		var obox1 = document.getElementById("box")
+//		console.log(obox1);
+//		报错
+//		obox1.css({
+//			border:"solid 1px black"
+//		})
+//		$(obox1).css({
+//			border:"solid 10px black"
+//		})
+		
+		
+//		var obox2 = $("#box");
+//		console.log(obox2);
+//		报错
+//		obox2.style.background = "red";
+//		obox2.css({
+//			background:"red",
+//			width:"100px",
+//			height:"100px"
+//		})
+//		obox2[0].style.background = "red";
+//		obox2.get(0).style.width = "200px";
+		
+		
+		
+		
+//		$("#box").css({background:"red"})
+//		$(".cont").css({background:"red"})
+//		$("span").css({background:"red"})
+		
+//		$(".cont:eq(2)+span").css({background:"red"})
+//		$(".cont:eq(2)~span").css({background:"red"})
+
+//		$(".cont:eq(2)").next("span").css({background:"red"})
+//		$(".cont:eq(2)").nextAll("span").css({background:"red"})
+		
+//		$(".msg span").css({background:"red"})
+//		$(".msg").find("span").css({background:"red"})
+		
+//		$(".msg>span").css({background:"red"})
+//		$(".msg").children("span").css({background:"red"})
+		
+//		$(".list li:first").css({background:"red"})
+//		$(".list li:last").css({background:"red"})
+//		$(".list li:not(.active)").css({background:"red"})
+//		$(".list li:even").css({background:"red"})
+//		$(".list li:odd").css({background:"red"})
+//		$(".list li:eq(2)").css({background:"red"})
+		
+		
+//		$("#btn").click(function(){
+//			$("#list li:contains("+ $("#txt").val() +")").css({background:"red"})
+//		})
+		
+//		$("#list li:empty").css({width:"100px",background:"red"})
+
+//		$("ul:has(.active)").css({background:"red"})
+//		$("ul").has(".active").css({background:"red"})
+		
+//		$("h1:hidden").css({background:"red"})
+//		$("h1:visible").css({background:"red"})
+		
+		
+//		$("ul").eq(0).css({background:"red"})
+//		console.log($("ul").eq(0).is(".list"))
+//		console.log($("ul").eq(0).is("#list"))
+		
+//		$("ul").eq(1).css({background:"blue"})
+//		console.log($("ul").eq(1).is(".list"))
+//		console.log($("ul").eq(1).is("#list"))
+		
+//		console.log($("ul").eq(0).hasClass("list"))
+//		console.log($("ul").eq(1).hasClass("list"))
+		
+//		$("#btn").click(function(){
+//			if($("ul").eq(0).is(".active")){
+//				$("ul").eq(0).removeClass("active")
+//			}else{
+//				$("ul").eq(0).addClass("active")
+//			}
+//		})
+		
+		
+//		jQuery对字符串的处理非常强大
+//		jQuery的方法,可以连缀
+//		手写连缀
+		
+		
+	</script>
+</html>

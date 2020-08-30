@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#cont{width: 1000px;overflow: hidden;border: solid 1px black;margin: 30px auto;}
+			.box{width: 250px;border: solid 1px black;box-sizing: border-box;text-align: center;float: left;}
+			.box img{width: 60%;display: block;margin: 10px auto;}
+			.box span{display: block;color: red;}
+			.box p{height: 52px;overflow: hidden;font-size: 18px;line-height: 26px;}
+			.box em{display: block;width: 120px;line-height: 30px;color: #fff;background: blue;margin: 10px auto;}
+		</style>
+	</head>
+	<body>
+		<h2>这是商品列表<small><a href="car.html">去购物车</a></small></h2>
+		<input type="button" name="btn1" id="btn1" value="手机" />
+		<input type="button" name="btn1" id="btn2" value="电脑" />
+		<div id="cont">
+		</div>
+	</body>
+	<script type="text/javascript">
+		var ocont = document.getElementById("cont");
+		
+		var obtn1 = document.getElementById("btn1")
+		var obtn2 = document.getElementById("btn2")
+		
+		obtn1.onclick = function(){
+			ajaxGet("http://localhost/1805/ajax/data/data.php?type=1",function(res){
+				var json = JSON.parse(res)
+				display(json)
+			})
+		}
+		obtn2.onclick = function(){
+			ajaxGet("http://localhost/1805/ajax/data/data.php?type=2",function(res){
+				var json = JSON.parse(res)
+				display(json)
+			})
+		}
+		
+		
+//		ajaxGet("http://localhost/1805/ajax/data/goods.json",function(res){
+	
+		ajaxGet("http://localhost/1805/ajax/data/data.php?type=1",function(res){
+			var json = JSON.parse(res)
+			display(json)
+		})
+		
+		function display(json){
+			var str = ""
+			for(var i=0;i<json.length;i++){
+				str += `<div class="box">
+										<img src="${json[i].src}">
+										<span>${json[i].price}</span>
+										<p>${json[i].name}</p>
+										<em>加入购物车</em>
+									</div>`
+			}
+			ocont.innerHTML = str;
+		}
+		
+		
+		
+		
+		function ajaxGet(url,callback){
+			if(XMLHttpRequest){
+				var ajax = new XMLHttpRequest()
+			}else{
+				var ajax = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			ajax.open("GET",url,true)
+			ajax.onreadystatechange = function(){
+				if(ajax.readyState == 4 && ajax.status == 200){
+					callback(ajax.responseText)
+				}
+			}
+			ajax.send(null)
+		}
+	</script>
+</html>

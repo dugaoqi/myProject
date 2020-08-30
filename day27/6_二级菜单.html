@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body>ul>li{background: #aaa;margin: 10px 0;width: 400px;}
+			li ul{display: none;background: #ccc;}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li><span>一级菜单</span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+			<li><span>一级菜单</span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+			<li><span>一级菜单</span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+			<li><span>一级菜单</span>
+				<ul>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+	<script src="libs/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$("#list").children("li").mouseover(function(){
+			$("#list")
+			.find("ul")
+			.hide(300)
+			.end()
+			.children("li")
+			.eq($(this).index())
+			.children("ul")
+			.show(300)
+		})
+	</script>
+</html>

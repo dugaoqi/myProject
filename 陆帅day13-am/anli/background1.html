@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>background1</title>
+<style>
+body{color:#ff0;}
+h1{color:#000;}
+p{clear:both;}
+div{width:200px;height:200px;padding:30px;border:10px dashed #000;margin-right:20px;float:left;}
+.bgc{background:#f99;}
+.bgi{background:url(images/w8.jpg);}
+.border-box{background-clip:border-box;background-origin:border-box;}
+.padding-box{background-clip:padding-box;background-origin:padding-box;}
+.content-box{background-clip:content-box;background-origin:content-box;}
+
+[class|=size]{border:10px solid #000;background-repeat:no-repeat;}
+.size-length{background-size:20px 50px;}
+.size-length-bai{background-size:100% 100%;}
+.size-cover{background-size:cover;}
+.size-contain{background-size:contain;}
+
+</style>
+</head>
+
+<body>
+<h1>background-clip:</h1>
+<div class="border-box bgc">border-box</div>
+<div class="padding-box bgc">paddig-box</div>
+<div class="content-box bgc">content-box</div>
+<p></p>
+
+<h1>background-origin:</h1>
+<div class="border-box bgi">border-box</div>
+<div class="padding-box bgi">paddig-box</div>
+<div class="content-box bgi">content-box</div>
+<p></p>
+
+
+<h1>background-size:</h1>
+<div class="size-length bgi">20px  50px</div>
+<div class="size-length-bai bgi">百分百</div>
+<div class="size-cover bgi">cover</div>
+<div class="size-contain bgi">contain</div>
+
+
+
+</body>
+</html>
+
+

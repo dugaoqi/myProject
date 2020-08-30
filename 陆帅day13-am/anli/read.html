@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>只读/非只读</title>
+<style> 
+input[type="text"]:read-only {background: #ff0;}
+input[type="text"]:read-write {background:#0ff;}
+input[type="text"]:-moz-read-only {background:#ff0;}
+input[type="text"]:-moz-read-write {background:#0ff;}
+</style>
+
+</head>
+
+<body>
+
+<form action="">
+<p>姓名：<input type="text" name="name" /></p>
+<p>地址：<input type="text" name="address" value="江苏省苏州市" readonly="readonly" /></p>
+</form>
+
+
+</body>
+</html>
+
+

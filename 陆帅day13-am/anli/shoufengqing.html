@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>手风琴</title>
+<style>
+*{padding:0;margin:0;}
+li{list-style:none;}
+a{text-decoration:none;}
+
+ul{width:500px;margin:100px auto;}
+ul li{margin-bottom:10px;}
+ul li a{display:block;height:30px;position:relative;background:#ddd;border-radius:6px;padding:10px;font:14px/30px "";color:#f99;}
+ul li a:before{content:"v";position:absolute;right:20px;top:8px;}
+ul li a+div{margin-top:10px;height:100px;overflow-x:hidden;display:none;border:1px solid #f00;}
+
+:target{background:#39f;color:#fff;}
+:target+div{display:block;}
+:target:before{content:">";position:absolute;right:20px;top:10px;}
+
+</style>
+</head>
+<body>
+<ul>
+	<li>
+    	<a href="#d1" id="d1">话题1</a>
+    	<div>
+
+        	多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+            多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+            多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+            多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+            多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+
+        </div>
+    </li>
+	<li>
+    	<a href="#d2" id="d2">话题2</a>
+    	<div>
+
+        	多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+
+
+        </div>
+    </li>
+	<li>
+    	<a href="#d3" id="d3">话题3</a>
+    	<div>
+
+        	多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+            多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+            多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+            多久撒多久啊离开多久啊离开多久啊了多久啊离开世界的啦<br/>
+
+        </div>
+    </li>
+	
+
+</ul>
+
+
+</body>
+</html>

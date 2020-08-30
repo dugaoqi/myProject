@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>结构性伪类（层级）选择器-无用版</title>
+<style>
+:root{background:#f99;}
+body :not(p){color:#0f0;}
+p:empty{height:20px;background:#ff0;}
+ul li:only-child{height:20px;background:#f80;}
+.none{display:none;}
+</style>
+</head>
+<body>
+<h1>亲生的</h1>
+<h2>亲生的</h2>
+<p>你懂的</p>
+<p></p>
+<p>
+</p>
+<p> </p>
+<h4>亲生的</h4>
+<h5>亲生的</h5>
+
+<ul>
+	<li>1</li>
+    <li class="none">2</li>
+    <li class="none">3</li>
+</ul>
+<ul>
+	<li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<ul>
+	<li>独生子</li>
+</ul>
+<ul>
+	<li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+
+</body>
+</html>

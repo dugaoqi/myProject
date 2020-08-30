@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>智能表单案例</title>
+<link href="css/public.css" rel="stylesheet" type="text/css">
+<style>
+*{border-radius:3px;}
+.form{width:422px;padding:14px 20px;border:1px solid #c2d67d;background:#9cbc2b;margin:50px auto;}
+.form h3{font:16px/36px "";color:#384412;}
+.form li{overflow:hidden;font:14px/28px "";border:1px solid #fff;padding:8px 11px;margin-bottom:3px;background:#bad06b;}
+.form li span{float:left;width:116px;color:#10120f;}
+.form li p{float:left;color:#999;}
+.form li p input{float:left;width:212px;height:28px;border:0;padding:0 5px;}
+.form li p textarea{resize:none;float:left;width:212px;height:96px;border:0;padding:0 5px;}
+
+.form li.te span{display:block;float:none;}
+.form li.te p{float:none;color:#10120f;}
+.form li.te p input{float:none;width:auto;height:auto;margin:0 22px 0 14px;}
+</style>
+</head>
+<body>
+
+<section class="form">
+<h3>Step 1:I kaixin jiu fine</h3>
+<ul>
+	<li>
+    	<span>Name:</span>
+        <p><input type="text" placeholder="my english is very very good" /></p>
+    </li>
+	<li>
+    	<span>Email:</span>
+        <p><input type="email" placeholder="my english is very very good" /></p>
+    </li>
+	<li>
+    	<span>Phone:</span>
+        <p><input type="tel" placeholder="my english is very very good" /></p>
+    </li>   
+</ul>
+<h3>Step 2:I kaixin jiu fine</h3>
+<ul>
+	<li>
+    	<span>Name:</span>
+        <p><textarea placeholder="gunduzi" ></textarea></p>
+    </li>
+	<li>
+    	<span>Email:</span>
+        <p><input type="tel" placeholder="my english is very very good" /></p>
+    </li>
+	<li>
+    	<span>Phone:</span>
+        <p><input type="text" placeholder="my english is very very good" /></p>
+    </li>   
+</ul>
+<h3>Step 3:I kaixin jiu fine</h3>
+<ul>
+	<li class="te">
+    	<span>Name:</span>
+        <p>
+        	<input type="radio" name="card" checked /> VISA
+            <input type="radio" name="card" /> suibian
+            <input type="radio" name="card" /> dota2
+        </p>
+    </li>
+	<li>
+    	<span>Email:</span>
+        <p><input type="number" placeholder="my english is very very good" /></p>
+    </li>
+	<li>
+    	<span>Email:</span>
+        <p><input type="number" placeholder="my english is very very good" /></p>
+    </li>
+	<li>
+    	<span>Phone:</span>
+        <p><input type="text" placeholder="my english is very very good" /></p>
+    </li>   
+</ul>
+</section>
+
+</body>
+</html>

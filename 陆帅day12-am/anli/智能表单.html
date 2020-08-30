@@ -1,0 +1,69 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>智能表单</title>
+
+</head>
+
+<body>
+<form autocomplete="off" oninput="outp.value=ran.value">
+	1链接地址：<br/>
+    url:<input type="url" >
+    <hr/>
+    2数字：<br/>
+    number:<input  type="number" value="10" min="10" max="100" step="5"/>
+    <hr/>
+    3邮箱：<br/>
+    email:<input type="email"  required="required" multiple >
+    <hr/>
+	4拖动：<br/>
+    range:<input type="range" max="23" min="2" id="ran" /><output name="outp"></output>
+    <hr/>
+    5颜色：<br/>
+    color:<input type="color" value="#ff0000" />
+    <hr/>
+    6搜索：<br/>
+    search:<input type="search" value=""/>
+    <hr/>
+	7电话：<br/>
+    tel:<input type="tel" value=""/>
+    <hr/>
+	8日期:<br/>
+    date:<input type="date" value="1996-07-12" />
+    <hr/>
+    9月:<br/>
+    month:<input type="month" value="1996-12" />
+    <hr/>
+    10周:<br/>
+    week:<input type="week" value="2016-W22" />
+    <hr/>
+    11时间:<br/>
+    time:<input type="time" value="00:00" />
+    <hr/>
+    12日期时间:<br/>
+    datetime-local:<input type="datetime-local" value="1998-05-24T00:00" />
+	<hr/>
+    
+   	<input type="text" id="txt" value="1" /> 
+    
+    
+    <input type="button" id="btn" value="点击测试" />
+    <input type="submit" />
+</form>
+
+
+
+</body>
+<script>
+var txt=document.getElementById("txt");
+var btn=document.getElementById("btn");
+var aInput=document.getElementsByTagName("input");
+btn.onclick=function(){
+	alert(aInput[txt.value-1].value);
+}
+</script>
+</html>
+
+

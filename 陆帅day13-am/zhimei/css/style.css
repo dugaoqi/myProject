@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+
+.margin{margin:0 auto;width:950px;}
+
+#top{height:35px;background:url(../images/t1.png);}
+#top img{float:right;margin:10px 9px 0 0;}
+
+#header{height:100px;}
+#header .logo{float:left;margin:42px 0 0 10px;width:194px;height:41px;background:url(../images/logo.png);}
+#header ul{float:left;margin:33px 0 0 81px;}
+#header ul li{float:left;background:url(../images/t2.png) no-repeat left;padding:0 10px;height:44px;}
+#header ul li.te{background:none;}
+#header ul li a{display:block;font:14px/44px "";height:44px;width:80px;text-align:center;}
+#header ul li a:hover{border-bottom:3px solid #000;color:#000;}
+
+#banner{height:400px;background:url(../images/banner.png) no-repeat center;}
+
+#main{}
+#main .title{text-align:center;}
+#main .title h3{background:#2d3237;color:#f00;font:20px/32px "";height:32px;}
+#main .title h3 span{color:#fff;}
+#main .title p{height:18px;font:14px/18px "";border-top:1px solid #dadbdc;background:url(../images/t4.png) repeat-x center;color:#3d4246;}
+#main .title p span{background:#fff;padding:0 10px;}
+#main .sheji{overflow:hidden;}
+#main .sheji ul{padding:46px 0 69px;width:110%;}
+#main .sheji ul li{float:left;margin:0 48px 0 36px;}
+#main .sheji ul li a{display:block;}
+#main .sheji ul li a img{}
+
+#main .ex{margin:38px 0 57px;overflow:hidden;}
+#main .ex ul{width:110%;}
+#main .ex ul li{float:left;width:172px;margin-right:20px;}
+#main .ex ul li a{display:block;}
+#main .ex ul li a img{display:block;}
+#main .ex ul li a .box{height:70px;background:#2d3237;text-align:left;padding-left:26px;}
+#main .ex ul li a .box p{font-size:14px;display:inline-block;vertical-align:middle;}
+#main .ex ul li a .box p b{display:block;color:#f00;}
+#main .ex ul li a .box p span{display:block;color:#fff;}
+#main .ex ul li.te a .box{background:#f00;}
+#main .ex ul li.te a .box p b{color:#2d3237;}
+
+#main .about{margin:20px 0 93px;text-align:center;color:#666;}
+#main .about h4{font:18px/32px "";}
+#main .about h4 b{font-weight:700;}
+#main .about p{font:14px/28px "";}
+
+#main .service{text-align:center;margin-bottom:94px;font:12px/100px "";color:#666;}
+#main .service img{margin:0 5px;}
+
+
+
+
+
+
+
+
+
+
+
+#footer{height:117px;background:#eaeaea;border-top:1px solid #b4b4b4;
+font:12px/22px "";text-align:center;
+}
+#footer .footer-t{margin-top:26px;}
+#footer .footer-t a{color:#000;}
+
+

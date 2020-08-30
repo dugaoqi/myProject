@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>错误收集系统</title>
+    <link rel="stylesheet" href="./libs/bootstrap.css">
+    <style>
+        .h-90{height: 90px;}
+        th{text-align: center;}
+        textarea{resize: none;}
+    </style>
+</head>
+<body>
+    <header class="container">
+        <section class="row align-items-center h-90">
+            <div class="col-3 h2">Bootstrap</div>
+            <div class="col-3">错误收集系统</div>
+            <div class="col-3"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" id="add">添加错题</button>
+            </div>
+        </section>
+    </header>
+
+    <section class="container mt-5">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <th>id</th>
+                <th>内容</th>
+                <th>原因</th>
+                <th>想法</th>
+                <th>删除</th>
+                <th>修改</th>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>data</td>
+                    <td>data</td>
+                    <td>data</td>
+                    <td>data</td>
+                    <td class="text-center"><span class="btn btn-secondary del">删除</span></td>
+                    <td class="text-center"><button type="button" class="btn btn-primary update" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">修改</button></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </section>
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <!-- <li class="page-item"><span class="page-link" id="previous">上一页</span></li>
+          <li class="page-item active"><span/span class="page-link">1</span></li>
+          <li class="page-item"><span class="page-link">2</span></li>
+          <li class="page-item"><span class="page-link">3</span></li>
+          <li class="page-item"><span class="page-link" id="next">下一页</span></li> -->
+        </ul>
+    </nav>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">错题收集</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">内容：</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">错误原因：</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                <div class="form-group">
+                        <label for="message-text" class="col-form-label">你的想法：</label>
+                        <textarea class="form-control" id="idea-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="sub">提交错误</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="libs/jquery.js"></script>
+<script src="libs/popper.js"></script>
+<script src="libs/bootstrap.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/index.js"></script>
+</html>

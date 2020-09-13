@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+		// 数据类型:  基本数据类型和引用数据类型
+		// 基本数据类型属于值传递: Number、String、undefined、布尔
+		// 引用数据类型：Object、Array
+
+		// 对象浅拷贝
+		var a={
+			name:"admin",
+		}
+		console.log(a);
+		var b=a;
+		b.name="root";
+		console.log(a);
+		console.log(b);
+
+		// 深拷贝
+
+		var c={name:"小明"};
+		var d={};
+		d.name=c.name;
+		console.log(c);
+		console.log(d);
+		d.name="红红";
+		console.log(d);
+
+
+		// 深拷贝方法二:
+
+		var person={
+			name:"小李",
+			sex:1,
+			age:18,
+			skill:function(){
+				console.log("喜欢睡觉。。。")
+			}
+		};
+        console.log(person);
+		var copyPerson={};
+		for(var i in person){
+			console.log(i);
+			copyPerson[i]=person[i];
+		}
+		copyPerson.name="丽丽";
+		copyPerson.sex=0;
+		console.log(copyPerson);
+	</script>
+</body>
+</html>

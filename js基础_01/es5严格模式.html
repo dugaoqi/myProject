@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+
+	<script type="text/javascript">
+		"use strict";
+		// 严格模式下声明变量必须用关键字 var
+		// 严格模式下函数的形参不允许重复,重复会报错
+		// 严格模式下函数的this指向 undefined
+
+
+		// function fn(a,b,b){
+		// 	console.log(this);
+		// 	console.log(a);
+		// 	console.log(b);
+		// };
+		// fn(12,14,11);
+
+
+		function fn1(a,b){
+			b=30;
+			console.log(arguments);
+			console.log(a);
+			console.log(b);
+		};
+		fn1(12,14);
+
+		// 严格模式的推荐写法
+
+		(function(){
+             "use strict";
+
+
+
+		})()
+	</script>
+</body>
+</html>

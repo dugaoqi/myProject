@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>浏览器对象模型</title>
+</head>
+<body>
+	
+
+
+	<script type="text/javascript">
+		
+		// var window={   //window是关键字不能作为变量
+		// 	alert:function(){},
+		// 	onload:function(){},
+		// 	document:{},
+		// 	history:{
+		// 		go:function(){},
+		// 		back:function(){},
+		// 		forward:function(){},
+		// 	},
+		// 	location:{},
+		// 	navigator:{},
+		// open:function(){},
+		// close:function(){},
+		// }
+
+
+		// window.alert(0);
+		// window.prompt("What's your name?");//有返回值
+		// window.confirm("确认删除吗?");//返回值:确定为true   取消为false
+
+
+
+
+
+		function fn(){
+			var a=window.confirm("充钱?");
+			if(a){
+				alert("欢迎光临！")
+			}else{
+				fn();
+			}
+		}
+
+
+		// fn();
+
+
+		// window.open("www.baidu.com")//浏览器会拦截
+		// document.onclick=function(){
+		// 	window.open("https://www.baidu.com");
+		// }
+
+		// var a=window.confirm("确认关闭当前页面吗?");
+		// if(a){			
+		// 	window.close()
+		// }
+
+
+		// window相关的事件
+		window.onload=function(){}
+		window.onscroll=function(){}
+		window.onresize=function(){}
+
+	</script>
+</body>
+</html>
